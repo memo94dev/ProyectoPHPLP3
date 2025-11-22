@@ -4,20 +4,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="SysWeb">
-    <meta name="author" content="Guillermo Barrientos">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/plugins/chosen/css/chosen.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>Sistema - Proyecto Web</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Sistema - Proyecto Web - SysWeb">
+    <meta name="author" content="Sistema - Proyecto Web - Guillermo Barrientos">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">    
+    <link href="assets/plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">  
+    <link href="assets/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/chosen/css/chosen.min.css">
+    <link href="assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- Script para DataTables -->
     <script language="javascript">
@@ -120,15 +121,15 @@
     </div>
 
     <script src="assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/datepicker/datepicker.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>    
+    <script src="assets/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="assets/plugins/chosen/js/chosen.jquery.min.js"></script>
     <script src="assets/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="assets/plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/slimScroll/jquery.slimscroll.js" type="text/javascript"></script>
+    <script src="assets/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script src="assets/plugins/datepicker/bootstrap-datepicker.min.js" type="text/javascript"></script>
     <script src="assets/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
-    <script src="assets/js/jquery.maskMoney.min.js" type="text/javascript"></script>
+    <script src='assets/plugins/fastclick/fastclick.min.js'></script>
+    <script src="assets/js/jquery.maskMoney.min.js"></script>
     <script src="assets/js/app.min.js" type="text/javascript"></script>
 
     <!-- Script para traducir DataTables -->

@@ -98,19 +98,19 @@
                                       <td class='center' width='100'>
                                       <div>";
                                 if ($data['status'] == 'activo') { ?>
-                                        <a data-toggle="tooltip" data-placement="top" title="Bloquear" style="margin-right:5px" 
-                                        class="btn btn-danger btn-sm" href="modules/user/proses.php?act=off&id=<?php echo $data['id_user']; ?>" 
+                                    <a data-toggle="tooltip" data-placement="top" title="Bloquear" style="margin-right:5px"
+                                        class="btn btn-danger btn-sm" href="modules/user/proses.php?act=off&id=<?php echo $data['id_user']; ?>"
                                         onclick="return confirm('Estas seguro de bloquear a <?php echo $data['name_user']; ?> ?');">
-                                            <i class="glyphicon glyphicon-off"></i>
-                                        </a>
-                                    <?php } else { ?>
-                                        <a data-toggle="tooltip" data-placement="top" title="Activar" style="margin-right:5px" 
-                                        class="btn btn-success btn-sm" href="modules/user/proses.php?act=on&id=<?php echo $data['id_user']; ?>" 
+                                        <i class="glyphicon glyphicon-off"></i>
+                                    </a>
+                                <?php } else { ?>
+                                    <a data-toggle="tooltip" data-placement="top" title="Activar" style="margin-right:5px"
+                                        class="btn btn-success btn-sm" href="modules/user/proses.php?act=on&id=<?php echo $data['id_user']; ?>"
                                         onclick="return confirm('Estas seguro de activar a <?php echo $data['name_user']; ?> ?');">
-                                            <i class="glyphicon glyphicon-ok-circle"></i>
-                                        </a>
+                                        <i class="glyphicon glyphicon-ok-circle"></i>
+                                    </a>
 
-                                <?php }
+                            <?php }
 
                                 echo "<a data-toggle='tooltip' data-placement='top' title='Editar' class='btn btn-primary btn-sm' 
                                 href='?module=form_user&form=edit&id=$data[id_user]'>
