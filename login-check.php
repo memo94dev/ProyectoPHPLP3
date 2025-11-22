@@ -18,9 +18,9 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
         $_SESSION['name_user']          = $data['name_user'];
         $_SESSION['username']           = $data['username'];
         $_SESSION['permisos_acceso']    = $data['permisos_acceso'];
-        echo "Bienvenido " . $_SESSION['name_user'];
+        //echo "Bienvenido " . $_SESSION['name_user'];
         
-        //header("Location: main.php");
+        header("Location: main.php");
     } else {
         header("Location: index.php?alert=1");
     }
