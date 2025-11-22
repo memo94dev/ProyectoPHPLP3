@@ -38,6 +38,12 @@
                     <h4><i class='icon fa fa-times-circle'></i> Ha salido exitosamente!</h4>
                     Has cerrado sesión correctamente.
                 </div>";
+        } elseif ($_GET['alert'] == 3) {
+            echo "<div class='alert alert-warning alert-dismissable'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    <h4><i class='icon fa fa-times-circle'></i> Ha ocurrido un error!</h4>
+                    Debes ingresar con usuario y contraseña.
+                </div>";
         }
         ?>
 

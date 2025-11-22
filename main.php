@@ -47,7 +47,7 @@
         </aside>
 
         <div class="content-wrapper">
-            <?php //include 'content.php'; ?>
+            <?php include 'content.php'; ?>
             <div class="modal fade" id="logout">
                 <div class="modal-dialog">
                     <div class="modal-content">
