@@ -16,10 +16,10 @@
                 if (empty($_GET['alert'])) {
                     echo "";
                 }elseif ($_GET['alert'] == 1) {
-                    echo "<div class='alert alert-success alert-dismissable'>
+                    echo "<div class='alert alert-danger alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            <h4><i class='icon fa fa-check-circle'></i> Exito!</h4>
-                            La contraseña ha sido modificada correctamente.
+                            <h4><i class='icon fa fa-check-circle'></i> Error!</h4>
+                            Error en la Contraseña.
                           </div>";
                 }elseif ($_GET['alert'] == 2) {
                     echo "<div class='alert alert-danger alert-dismissable'>
@@ -28,7 +28,7 @@
                             La contraseña actual no coincide.
                           </div>";
                 }elseif ($_GET['alert'] == 3) {
-                    echo "<div class='alert alert-danger alert-dismissable'>
+                    echo "<div class='alert alert-success alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                             <h4><i class='icon fa fa-times-circle'></i> Error!</h4>
                             La nueva contraseña cambiada correctamente.

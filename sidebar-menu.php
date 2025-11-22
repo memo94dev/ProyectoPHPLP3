@@ -14,8 +14,7 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
             <a href="?module=start"><i class="fa fa-home"></i>Inicio</a>
         </li>
 
-        <?php
-        if ($_GET['module'] == 'start') { ?>
+        <?php // if ($_GET['module'] == 'start') { ?>
 
             <li class="treeview">
                 <a href="javascript:void(0)">
@@ -72,7 +71,7 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
                 </li>
             <?php } ?>
 
-        <?php } ?>
+        <?php //} ?>
 
     </ul>
 
