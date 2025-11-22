@@ -8,8 +8,16 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     if ($_GET['module'] == 'start') {
         include 'modules/start/view.php';
     }
+
     elseif ($_GET['module'] == 'password') {
         include 'modules/password/view.php';
+    }
+
+    elseif ($_GET['module'] == 'user') {
+        include 'modules/user/view.php';
+    }
+    elseif ($_GET['module'] == 'form') {
+        include 'modules/user/form.php';
     }
 }
 

@@ -18,11 +18,11 @@
                 }elseif ($_GET['alert'] == 1) {
                     echo "<div class='alert alert-danger alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            <h4><i class='icon fa fa-check-circle'></i> Error!</h4>
+                            <h4><i class='icon fa fa-times-circle'></i> Error!</h4>
                             Error en la Contraseña.
                           </div>";
                 }elseif ($_GET['alert'] == 2) {
-                    echo "<div class='alert alert-danger alert-dismissable'>
+                    echo "<div class='alert alert-warning alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                             <h4><i class='icon fa fa-times-circle'></i> Error!</h4>
                             La contraseña actual no coincide.
@@ -30,7 +30,7 @@
                 }elseif ($_GET['alert'] == 3) {
                     echo "<div class='alert alert-success alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            <h4><i class='icon fa fa-times-circle'></i> Error!</h4>
+                            <h4><i class='icon fa fa-check-circle'></i> Error!</h4>
                             La nueva contraseña cambiada correctamente.
                           </div>";
                 }

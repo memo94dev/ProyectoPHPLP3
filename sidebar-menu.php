@@ -48,7 +48,6 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
             </li>
 
             <!-- Administrar Usuarios -->
-
             <?php if ($_GET['module'] == "user" || $_GET['module'] == "form_user") { ?>
                 <li class="active">
                     <a href="?module=user"><i class="fa fa-user"></i>Administrar Usuarios</a>
@@ -60,7 +59,6 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
             <?php } ?>
 
             <!-- Administrar contraseñas -->
-
             <?php if ($_GET['module'] == "password") { ?>
                 <li class="active">
                     <a href="?module=password"><i class="fa fa-user"></i>Cambiar Contraseña</a>
