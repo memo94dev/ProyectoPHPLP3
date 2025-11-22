@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="SysWeb">
+    <meta name="author" content="Guillermo Barrientos">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="login-box">
+        <div style="color:#3c8dbc;" class="login-logo">
+            <img style="margin-top: -15px;" src="assets/img/favicon.ico" alt="SysWeb Logo" height="50">
+            <b>SysWeb</b>
+        </div>
+
+        <?php
+        if (empty($_GET['alert'])) {
+            echo "";
+        } elseif ($_GET['alert'] == 1) {
+            echo "<div class='alert alert-danger alert-dismissable'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    <h4><i class='icon fa fa-times-circle'></i> Error al iniciar sesión!</h4>
+                    Usuario o contraseña incorrecta, Vuelva a ingresar sus datos
+                </div>";
+        } elseif ($_GET['alert'] == 2) {
+            echo "<div class='alert alert-success alert-dismissable'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    <h4><i class='icon fa fa-times-circle'></i> Ha salido exitosamente!</h4>
+                    Has cerrado sesión correctamente.
+                </div>";
+        }
+        ?>
+
+        <div class="login-box-body">
+            <p class="login-box-msg"><i class="fa fa-user icon-tittle"></i>Por favor inicie sesión</p>
+            <br>
+            <form action="login-check.php" method="POST">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" name="username" placeholder="Usuario" autocomplete="off" required>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" name="password" placeholder="Contraseña" autocomplete="off" required>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input type="submit" class="btn btn-primary btn-block btn-flat" name="login" value="Ingresar">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <script src="assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+</body>
+
+</html>
