@@ -27,7 +27,6 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
             if (isset($_POST['id_user'])) {
                 $id_user            = mysqli_real_escape_string($mysqli, trim($_POST['id_user']));
                 $username           = mysqli_real_escape_string($mysqli, trim($_POST['username']));
-                //$password           = md5(mysqli_real_escape_string($mysqli, trim($_POST['password'])));
                 $name_user          = mysqli_real_escape_string($mysqli, trim($_POST['name_user']));
                 $email              = mysqli_real_escape_string($mysqli, trim($_POST['email']));
                 $telefono           = mysqli_real_escape_string($mysqli, trim($_POST['telefono']));
@@ -56,7 +55,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                 echo json_encode($files);
                 exit();*/
 
-                if (empty($_POST['pasword']) && empty($_FILE['foto']['name'])) {
+                if (empty($_FILES['foto']['name'])) {
                     $query = mysqli_query($mysqli, "UPDATE usuarios SET username = '$username',
                                                                 name_user = '$name_user',
                                                                 email = '$email',
@@ -67,19 +66,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                     if ($query) {
                         header("Location: ../../main.php?module=user&alert=2");
                     }
-                }/* elseif (!empty($_POST['password']) && empty($_FILES['foto']['name'])) {
-                    $query = mysqli_query($mysqli, "UPDATE usuarios SET username = '$username',
-                                                                password = '$password',
-                                                                name_user = '$name_user',
-                                                                email = '$email',
-                                                                telefono = '$telefono',
-                                                                permisos_acceso = '$permisos_acceso'
-                                                        WHERE id_user = '$id_user'")
-                        or die('Error: ' . mysqli_error($mysqli));
-                    if ($query) {
-                        header("Location: ../../main.php?module=user&alert=2");
-                    }
-                }*/ elseif (empty($_POST['password']) && !empty($_FILES['foto']['name'])) {
+                } elseif (!empty($_FILES['foto']['name'])) {
                     if (in_array($extension, $allowed_ext)) {
                         if ($size_file <= 1000000) {
                             move_uploaded_file($tmp_file, $path);
@@ -103,30 +90,10 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                 } else {
                     header("Location: ../../main.php?module=user&alert=7");
                 }
-            } else {
-                if (in_array($extension, $allowed_ext)) {
-                    if ($size_file <= 1000000) {
-                        move_uploaded_file($tmp_file, $path);
-                        $query = mysqli_query($mysqli, "UPDATE usuarios SET  username = '$username',
-                                                                        name_user = '$name_user',
-                                                                        email = '$email',
-                                                                        telefono = '$telefono',
-                                                                        permisos_acceso = '$permisos_acceso',
-                                                                        foto = '$name_file'
-                                                                WHERE id_user = '$id_user'")
-                            or die('Error: ' . mysqli_error($mysqli));
-                        if ($query) {
-                            header("Location: ../../main.php?module=user&alert=2");
-                        }
-                    } else {
-                        header("Location: ../../main.php?module=user&alert=6");
-                    }
-                } else {
-                    header("Location: ../../main.php?module=user&alert=5");
-                }
             }
         }
-    } elseif ($_GET['act'] == 'on') { //proses.php?act=on&id=6
+
+    } elseif ($_GET['act'] == 'on') { 
         if (isset($_GET['id'])) {
             $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
 
@@ -152,3 +119,4 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
         }
     }
 }
+?>
