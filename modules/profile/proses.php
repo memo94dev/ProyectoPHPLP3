@@ -1,28 +1,12 @@
 <?php
 
 session_start();
-require "../../config/database.php";
+require_once "../../config/database.php";
 
 if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
     echo "<meta http-equiv='refresh' content='0; url=index.php?alert=3'>";
 } else {
-    if ($_GET['act'] == 'insert') {
-        $username           = mysqli_real_escape_string($mysqli, trim($_POST['username']));
-        $password           = md5(mysqli_real_escape_string($mysqli, trim($_POST['password'])));
-        $name_user          = mysqli_real_escape_string($mysqli, trim($_POST['name_user']));
-        $email              = mysqli_real_escape_string($mysqli, trim($_POST['email']));
-        $telefono           = mysqli_real_escape_string($mysqli, trim($_POST['telefono']));
-        $permisos_acceso    = mysqli_real_escape_string($mysqli, trim($_POST['permisos_acceso']));
-        $status             = mysqli_real_escape_string($mysqli, trim($_POST['status']));
-
-        $query = mysqli_query($mysqli, "INSERT INTO usuarios (username, password, name_user, email, telefono, permisos_acceso, status)
-                                        VALUES ('$username', '$password', '$name_user', '$email', '$telefono', '$permisos_acceso', '$status')")
-            or die('Error: ' . mysqli_error($mysqli));
-
-        if ($query) {
-            header("Location: ../../main.php?module=user&alert=1");
-        }
-    } elseif ($_GET['act'] == 'update') {
+    if ($_GET['act'] == 'update') {
         if (isset($_POST['Guardar'])) {
             if (isset($_POST['id_user'])) {
                 $id_user            = mysqli_real_escape_string($mysqli, trim($_POST['id_user']));
@@ -64,7 +48,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                                                         WHERE id_user = '$id_user'")
                         or die('Error: ' . mysqli_error($mysqli));
                     if ($query) {
-                        header("Location: ../../main.php?module=user&alert=2");
+                        header("Location: ../../main.php?module=profile&alert=1");
                     }
                 } elseif (!empty($_FILES['foto']['name'])) {
                     if (in_array($extension, $allowed_ext)) {
@@ -79,42 +63,41 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                                                                 WHERE id_user = '$id_user'")
                                 or die('Error: ' . mysqli_error($mysqli));
                             if ($query) {
-                                header("Location: ../../main.php?module=user&alert=2");
+                                header("Location: ../../main.php?module=profile&alert=1");
                             }
                         } else {
-                            header("Location: ../../main.php?module=user&alert=6");
+                            header("Location: ../../main.php?module=profile&alert=3");
                         }
                     } else {
-                        header("Location: ../../main.php?module=user&alert=5");
+                        header("Location: ../../main.php?module=profile&alert=2");
                     }
                 } else {
-                    header("Location: ../../main.php?module=user&alert=7");
+                    header("Location: ../../main.php?module=user&alert=4");
                 }
             }
-        }
+        } elseif ($_GET['act'] == 'on') { 
+            if (isset($_GET['id'])) {
+                $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
 
-    } elseif ($_GET['act'] == 'on') { 
-        if (isset($_GET['id'])) {
-            $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
+                $query = mysqli_query($mysqli, "UPDATE usuarios SET status = 'activo'
+                                                WHERE id_user = '$id_user'")
+                    or die('Error: ' . mysqli_error($mysqli));
 
-            $query = mysqli_query($mysqli, "UPDATE usuarios SET status = 'activo'
-                                            WHERE id_user = '$id_user'")
-                or die('Error: ' . mysqli_error($mysqli));
-
-            if ($query) {
-                header("Location: ../../main.php?module=user&alert=3");
+                if ($query) {
+                    header("Location: ../../main.php?module=user&alert=3");
+                }
             }
-        }
-    } elseif ($_GET['act'] == 'off') {
-        if (isset($_GET['id'])) {
-            $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
+        } elseif ($_GET['act'] == 'off') {
+            if (isset($_GET['id'])) {
+                $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
 
-            $query = mysqli_query($mysqli, "UPDATE usuarios SET status = 'inactivo'
-                                            WHERE id_user = '$id_user'")
-                or die('Error: ' . mysqli_error($mysqli));
+                $query = mysqli_query($mysqli, "UPDATE usuarios SET status = 'inactivo'
+                                                WHERE id_user = '$id_user'")
+                    or die('Error: ' . mysqli_error($mysqli));
 
-            if ($query) {
-                header("Location: ../../main.php?module=user&alert=4");
+                if ($query) {
+                    header("Location: ../../main.php?module=user&alert=4");
+                }
             }
         }
     }

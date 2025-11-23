@@ -13,7 +13,7 @@ $data = mysqli_fetch_assoc($query);
             <img src="images/user/user-default.png" class="user-image" alt="Imagen de usuario">
 
         <?php } else { ?>
-            <img src="assets/img/user/<?php echo $data['foto']; ?>" class="user-image" alt="User Image">
+            <img src="images/user/<?php echo $data['foto']; ?>" class="user-image" alt="User Image">
         <?php } ?>
         <span class="hidden-xs"><?php echo $data['name_user']; ?><i style="margin-left: 5px;" class="fa fa-angle-down"></i></span>
     </a>

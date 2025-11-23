@@ -19,6 +19,14 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     elseif ($_GET['module'] == 'form') {
         include 'modules/user/form.php';
     }
+
+    elseif ($_GET['module'] == 'profile') {
+        include 'modules/profile/view.php';
+    }
+    elseif ($_GET['module'] == 'form_profile') {
+        include 'modules/profile/form.php';
+    }
+    
 }
 
 ?>

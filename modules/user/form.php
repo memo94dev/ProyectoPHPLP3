@@ -77,8 +77,7 @@
                                     <label class="col-sm-2 control-label">Estado</label>
                                     <div class="col-sm-5">
                                         <select style="cursor: pointer;" class="form-control" name="status" required>
-                                            <option value="" disabled selected>Seleccione una opción</option>
-                                            <option value="activo">Activo</option>
+                                            <option value="activo" selected>Activo</option>
                                             <option value="inactivo">Inactivo</option>
                                         </select>
                                     </div>
@@ -136,7 +135,7 @@
                                                 <img style="border: 1px solid #eaeaea; border-radius: 5px" src="images/user/<?php echo $data['foto']?>" width="128" alt="Foto de Perfil">
                                             <?php } ?>
                                         <br><br>
-                                        <input type="file" name="foto">
+                                        <input type="file" name="foto" accept=".jpg,.jpeg,.png">
                                     </div>
                                 </div>
                             </div>
