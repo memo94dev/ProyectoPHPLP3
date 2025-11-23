@@ -26,6 +26,13 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     elseif ($_GET['module'] == 'form_profile') {
         include 'modules/profile/form.php';
     }
+
+    elseif ($_GET['module'] == 'departamento') {
+        include 'modules/departamento/view.php';
+    }
+    elseif ($_GET['module'] == 'form_departamento') {
+        include 'modules/departamento/form.php';
+    }
     
 }
 
