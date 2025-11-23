@@ -1,3 +1,4 @@
+<!-- Insertar Usuarios -->
 <?php if ($_GET['form'] == 'add') { ?>
 
     <section class="content-header">
@@ -44,6 +45,22 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
+                                    <label class="col-sm-2 control-label">Correo</label>
+                                    <div class="col-sm-5">
+                                        <input type="email" class="form-control" name="email" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <label class="col-sm-2 control-label">Telefono</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" name="telefono" autocomplete="off" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Permisos de Acceso</label>
                                     <div class="col-sm-5">
                                         <select style="cursor: pointer;" class="form-control" name="permisos_acceso" required>
@@ -51,6 +68,18 @@
                                             <option value="Super Admin">Administrador</option>
                                             <option value="Compras">Compras</option>
                                             <option value="Ventas">Ventas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <label class="col-sm-2 control-label">Estado</label>
+                                    <div class="col-sm-5">
+                                        <select style="cursor: pointer;" class="form-control" name="status" required>
+                                            <option value="" disabled selected>Seleccione una opción</option>
+                                            <option value="activo">Activo</option>
+                                            <option value="inactivo">Inactivo</option>
                                         </select>
                                     </div>
                                 </div>
@@ -69,6 +98,7 @@
         </div>
     </section>
 
+<!-- Editar Usuarios -->
 <?php } elseif ($_GET['form'] == 'edit') {
     if (isset($_GET['id'])) {
         $id_user = $_GET['id'];
