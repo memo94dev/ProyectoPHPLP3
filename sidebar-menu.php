@@ -22,7 +22,7 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
                 <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
                 <ul class="treeview-menu">
                     <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>Ciudad</a></li>
+                    <li><a href="?module=ciudad"><i class="fa fa-circle-o"></i>Ciudad</a></li>
                 </ul>
             </a>
         </li>
@@ -98,7 +98,7 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
                 <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
                 <ul class="treeview-menu">
                     <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i>Ciudad</a></li>
+                    <li><a href="?module=ciudad"><i class="fa fa-circle-o"></i>Ciudad</a></li>
                 </ul>
             </a>
         </li>
