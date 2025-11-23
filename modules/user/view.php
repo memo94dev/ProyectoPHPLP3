@@ -113,7 +113,7 @@
                             <?php }
 
                                 echo "<a data-toggle='tooltip' data-placement='top' title='Editar' class='btn btn-primary btn-sm' 
-                                href='?module=form_user&form=edit&id=$data[id_user]'>
+                                href='?module=form&form=edit&id=$data[id_user]'>
                                         <i class='glyphicon glyphicon-edit'></i>
                                       </a>
                                     </div>

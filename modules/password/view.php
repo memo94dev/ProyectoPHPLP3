@@ -61,7 +61,7 @@
                     <div class="box-footer bg-btn-action">
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <input type="submit" class="btn btn-primary btn-submit" name="guardar" value="Guardar">
+                                <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
                                 <a href="?module=start" class="btn btn-default btn-reset">Cancelar</a>
                             </div>
                         </div>

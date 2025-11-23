@@ -6,7 +6,7 @@ require_once "../../config/database.php";
 if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     echo "<meta http-equiv='refresh' content='0; url=index.php?alert=3'>";
 }else{
-    if (isset($_POST['guardar'])) {
+    if (isset($_POST['Guardar'])) {
         $old_password         = md5(mysqli_real_escape_string($mysqli, trim($_POST['old_password'])));
         $new_password         = md5(mysqli_real_escape_string($mysqli, trim($_POST['new_password'])));
         $confirm_new_password = md5(mysqli_real_escape_string($mysqli, trim($_POST['confirm_new_password'])));
