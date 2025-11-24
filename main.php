@@ -15,9 +15,11 @@
     <link href="assets/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="assets/plugins/chosen/css/chosen.min.css">
+    <!-- https://vscode.dev/github/memo94dev/ProyectoPHPLP3/blob/main/assets/plugins/chosen/css/chosen.min.css -->
     <link href="assets/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css">
+    <!-- <link href="assets/plugins/datepicker/datepicker.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- https://vscode.dev/github/memo94dev/ProyectoPHPLP3/blob/main/assets/plugins/datepicker/datepicker.min.css -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- Script para DataTables -->
@@ -122,7 +124,8 @@
 
     <script src="assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>    
-    <script src="assets/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="assets/plugins/datepicker/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <!-- https://vscode.dev/github/memo94dev/ProyectoPHPLP3/blob/main/assets/plugins/datepicker/bootstrap-datepicker.min.js -->
     <script src="assets/plugins/chosen/js/chosen.jquery.min.js"></script>
     <script src="assets/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
