@@ -75,8 +75,8 @@
                                       <td class='center'>$total</td>
                                       <td class='center' width='100'>
                                       <div>"; ?>
-                                <a data-toggle='tooltip' data-placement='top' title='Imprimir' class='btn btn-warning btn-sm'
-                                    href="modules/compras/proses.php?act=print&cod_compra=<?php echo $cod_compra; ?>">
+                                <a target="_blank" data-toggle='tooltip' data-placement='top' title='Imprimir' class='btn btn-warning btn-sm'
+                                    href="modules/compras/print.php?act=print&cod_compra=<?php echo $cod_compra; ?>">
                                     <i class='glyphicon glyphicon-print'></i>
                                 </a>
                                 <a href="modules/compras/proses.php?act=anular&cod_compra=<?php echo $cod_compra; ?>"
