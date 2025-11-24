@@ -11,14 +11,19 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
         $ci_ruc               = mysqli_real_escape_string($mysqli, trim($_POST['ci_ruc']));
         $cli_nombre           = mysqli_real_escape_string($mysqli, trim($_POST['cli_nombre']));
         $cli_apellido         = mysqli_real_escape_string($mysqli, trim($_POST['cli_apellido']));
-        $cli_direccion        = mysqli_real_escape_string($mysqli, trim($_POST['cli_direccion']));
-        $cli_telefono         = mysqli_real_escape_string($mysqli, trim($_POST['cli_telefono']));
+        //$cli_direccion        = mysqli_real_escape_string($mysqli, trim($_POST['cli_direccion']));
+        $cli_direccion        = empty(trim($_POST['cli_direccion']))
+            ? 'sin registros'
+            : mysqli_real_escape_string($mysqli, trim($_POST['cli_direccion']));
+        $cli_telefono         = empty(trim($_POST['cli_telefono']))
+            ? '0'
+            : mysqli_real_escape_string($mysqli, trim($_POST['cli_telefono']));
         $cod_ciudad           = mysqli_real_escape_string($mysqli, trim($_POST['cod_ciudad']));
 
         $query = mysqli_query($mysqli, "INSERT INTO clientes 
                                             (id_cliente, ci_ruc, cli_nombre, cli_apellido, cli_direccion, cli_telefono, cod_ciudad)
                                         VALUES 
-                                            ('$id_cliente', '$cli_documento', '$cli_nombre', '$cli_apellido', '$cli_direccion', '$cli_telefono', '$cod_ciudad')")
+                                            ('$id_cliente', '$ci_ruc', '$cli_nombre', '$cli_apellido', '$cli_direccion', $cli_telefono, '$cod_ciudad')")
             or die('Error: ' . mysqli_error($mysqli));
 
         if ($query) {
@@ -33,8 +38,12 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                 $ci_ruc               = mysqli_real_escape_string($mysqli, trim($_POST['ci_ruc']));
                 $cli_nombre           = mysqli_real_escape_string($mysqli, trim($_POST['cli_nombre']));
                 $cli_apellido         = mysqli_real_escape_string($mysqli, trim($_POST['cli_apellido']));
-                $cli_direccion        = mysqli_real_escape_string($mysqli, trim($_POST['cli_direccion']));
-                $cli_telefono         = mysqli_real_escape_string($mysqli, trim($_POST['cli_telefono']));
+                $cli_direccion        = empty(trim($_POST['cli_direccion']))
+                    ? 'sin registros'
+                    : mysqli_real_escape_string($mysqli, trim($_POST['cli_direccion']));
+                $cli_telefono         = empty(trim($_POST['cli_telefono']))
+                    ? '0'
+                    : mysqli_real_escape_string($mysqli, trim($_POST['cli_telefono']));
                 $cod_ciudad           = mysqli_real_escape_string($mysqli, trim($_POST['cod_ciudad']));
 
                 $query = mysqli_query($mysqli, "UPDATE clientes SET id_cliente = '$id_cliente', 

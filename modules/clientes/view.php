@@ -62,7 +62,7 @@
                                 <th class="center">Dirección</th>
                                 <th class="center">Teléfono</th>
                                 <th class="center">Ciudad</th>
-                                <th class="center">Depto.</th>
+                                <th class="center">Dpto.</th>
                                 <th class="center">Acciones</th>
                             </tr>
                         </thead>
@@ -77,7 +77,7 @@
                                 $cli_nombre = $data['cli_nombre'];
                                 $cli_apellido = $data['cli_apellido'];
                                 $cli_direccion = $data['cli_direccion'];
-                                $cli_telefono = $data['cli_telefono'];
+                                $cli_telefono = str_pad($data['cli_telefono'], 10, '0', STR_PAD_LEFT); // Rellenar con ceros a la izquierda
                                 $ciu_descripcion = $data['descrip_ciudad'];
                                 $dep_descripcion = $data['dep_descripcion'];
                                 echo "<tr>
