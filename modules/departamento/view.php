@@ -47,6 +47,10 @@
             <!-- Aplicación de DataTables -->
             <div class="box box-primary">
                 <div class="box-body">
+                    <section>
+                        <a class="btn btn-warning btn-social pull-right" href="modules/departamento/print.php" 
+                        target="_blank" title="Imprimir tabla"><i class="fa fa-print"></i> Imprimir</a>
+                    </section>
                     <table id="dataTables1" class="table table-bordered table-striped table-hover">
                         <h2>Lista de Departamentos</h2>
                         <thead>
