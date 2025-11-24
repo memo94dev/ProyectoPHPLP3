@@ -39,7 +39,7 @@
                     <div class="icon">
                         <i class="glyphicon glyphicon-piggy-bank"></i>
                     </div>
-                    <a href="?modules=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
+                    <a href="?module=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <div class="icon">
                         <i class="fa fa-cart-plus"></i>
                     </div>
-                    <a href="?modules=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
+                    <a href="?module=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <div class="icon">
                         <i class="fa fa-area-chart"></i>
                     </div>
-                    <a href="?modules=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
+                    <a href="?module=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                     <div class="icon">
                         <i class="glyphicon glyphicon-piggy-bank"></i>
                     </div>
-                    <a href="?modules=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
+                    <a href="?module=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                     <div class="icon">
                         <i class="fa fa-area-chart"></i>
                     </div>
-                    <a href="?modules=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
+                    <a href="?module=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
@@ -214,7 +214,7 @@
                     <div class="icon">
                         <i class="fa fa-cart-plus"></i>
                     </div>
-                    <a href="?modules=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
+                    <a href="?module=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
