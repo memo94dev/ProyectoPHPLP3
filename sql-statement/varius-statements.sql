@@ -80,3 +80,28 @@ JOIN tipo_producto tp ON pro.cod_tipo_prod = tp.cod_tipo_prod);
 
 SELECT * FROM v_det_compra;
 
+SELECT MAX(cod_compra) as id FROM compra;
+
+INSERT INTO detalle_compra(cod_producto, cod_compra, cod_deposito, precio, cantidad) 
+VALUES(1, 1, 1, 2, 3000);
+
+/* Trigger */
+DELIMITER $$
+CREATE
+    TRIGGER borrar_temp AFTER INSERT
+    ON compra
+    FOR EACH ROW BEGIN
+   DELETE FROM tmp;
+    END$$
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER borrar_temp
+AFTER INSERT ON compra
+FOR EACH ROW
+BEGIN
+    DELETE FROM tmp;
+END$$
+
+DELIMITER ;

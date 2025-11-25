@@ -6,7 +6,7 @@ $action = (isset($_REQUEST['action']) && $_REQUEST['action'] != NULL) ? $_REQUES
 if ($action == 'ajax') {
     // escaping, additionally removing everything that could be (html/javascript-) code
     $x = mysqli_real_escape_string($mysqli, (strip_tags($_REQUEST['x'], ENT_QUOTES)));
-    $aColumns = array('nombre_producto', 'codigo_producto', 'id_u_medida', 'p_descrip', 'precio'); // columnas de busqueda
+    $aColumns = array('cod_producto', 'cod_tipo_prod', 'id_u_medida', 'p_descrip', 'precio'); // columnas de busqueda
     $sTable = "producto";
     $sWhere = "";
     if ($_GET['x'] != "") {
@@ -74,7 +74,7 @@ if ($action == 'ajax') {
                         <input type="text" class="form-control" style="text-align:right" id="cantidad_<?php echo $cod_producto; ?>" value="1" >
                     </td>
                     <td class="col-xs-2">
-                        <input type="text" class="form-control" style="text-align:right" id="precio_compra_<?php echo $cod_producto; ?>" value="<?php echo number_format($precio_compra, 0, ',', '.'); ?>" >
+                        <input type="text" class="form-control" style="text-align:right" id="precio_compra_<?php echo $cod_producto; ?>" value="<?php echo $precio_compra; ?>" >
                     </td>
                     <td>
                         <span class="pull-right">
@@ -94,7 +94,7 @@ if ($action == 'ajax') {
             </table>
         </div>
     
-<?php 
+        <?php 
     }
 }
 ?>

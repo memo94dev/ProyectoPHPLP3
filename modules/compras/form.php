@@ -87,7 +87,7 @@
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Deposito</label>
                                     <div class="col-sm-5">
-                                        <select required class="chosen-select" data-placeholder="Seleccione un proveedor" autocomplete="off" name="cod_proveedor" id="">
+                                        <select required class="chosen-select" data-placeholder="Seleccione un proveedor" autocomplete="off" name="cod_deposito" id="">
                                             <option value=""></option>
                                             <?php
                                             $query_dep = mysqli_query($mysqli, "SELECT cod_deposito, descrip 
@@ -115,6 +115,14 @@
                             <div id="resultados" class='col-md-9'>
                                 <!-- Carga los datos ajax -->
                             </div>
+                            <div class="box-footer">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
+                                        <a href="?module=ciudad" class="btn btn-default btn-reset">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -129,13 +137,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 
 <script>
+    // $(document).ready(function() {
+    //     load(1);
+    // });
+
     $(document).ready(function() {
+        // Carga inicial
         load(1);
+
+        // Cuando el modal ya está completamente visible
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#x').focus(); // aquí sí es seguro dar foco al input
+        });
     });
 
     function load(page) {
         var x = $("#x").val();
-        var parametros = {"action": "ajax", "page": page, "x": x};
+        var parametros = {
+            "action": "ajax",
+            "page": page,
+            "x": x
+        };
         $("#loader").fadeIn('slow');
         $.ajax({
             url: './ajax/productos_pedidos.php',
@@ -148,13 +170,15 @@
                 $('#loader').html(''); // limpia el loader img
             }
         })
-        
+
     };
 </script>
 <script>
     function agregar(id) {
         var precio_compra = $('#precio_compra_' + id).val();
         var cantidad = $('#cantidad_' + id).val();
+        console.log("precio:" + precio_compra);
+        console.log("cantidad:" + cantidad);
 
         //Inicia validacion
         if (isNaN(cantidad)) {
@@ -186,6 +210,7 @@
             }
         });
     }
+
     function eliminar(id) {
         $.ajax({
             type: "GET",
