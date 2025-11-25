@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                             <div id="resultados" class='col-md-9'>
-
+                                <!-- Carga los datos ajax -->
                             </div>
                         </div>
                     </form>
@@ -123,6 +123,83 @@
     </section>
 
 <?php } ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        load(1);
+    });
+
+    function load(page) {
+        var x = $("#x").val();
+        var parametros = {"action": "ajax", "page": page, "x": x};
+        $("#loader").fadeIn('slow');
+        $.ajax({
+            url: './ajax/productos_pedidos.php',
+            data: parametros,
+            beforeSend: function(objeto) {
+                $('#loader').html('<img src="./images/ajax-loader.gif"> Cargando...');
+            },
+            success: function(data) {
+                $(".outer_div").html(data).fadeIn('slow');
+                $('#loader').html(''); // limpia el loader img
+            }
+        })
+        
+    };
+</script>
+<script>
+    function agregar(id) {
+        var precio_compra = $('#precio_compra_' + id).val();
+        var cantidad = $('#cantidad_' + id).val();
+
+        //Inicia validacion
+        if (isNaN(cantidad)) {
+            alert('Esto no es un numero');
+            document.getElementById('cantidad_' + id).focus();
+            return false;
+        }
+        if (isNaN(precio_compra)) {
+            alert('Esto no es un numero');
+            document.getElementById('precio_compra_' + id).focus();
+            return false;
+        }
+        //Fin validacion
+        $parametros = {
+            "id": id,
+            "precio_compra": precio_compra,
+            "cantidad": cantidad
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "./ajax/agregar_pedido.php",
+            data: $parametros,
+            beforeSend: function(objeto) {
+                $("#resultados").html("Mensaje: Cargando...");
+            },
+            success: function(datos) {
+                $("#resultados").html(datos);
+            }
+        });
+    }
+    function eliminar(id) {
+        $.ajax({
+            type: "GET",
+            url: "./ajax/agregar_pedido.php",
+            data: "id=" + id,
+            beforeSend: function(objeto) {
+                $("#resultados").html("Mensaje: Cargando...");
+            },
+            success: function(datos) {
+                $("#resultados").html(datos);
+            }
+        });
+    }
+</script>
 
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
@@ -143,7 +220,9 @@
                     </div>
                 </form>
                 <div id="loader" style="position: absolute; text-align: center; top: 55px; width: 100%; display:none"></div>
-                <div class="outer_div"></div>
+                <div class="outer_div">
+                    <!-- datos por ajax -->
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
