@@ -43,7 +43,7 @@ if ($_GET['act'] == 'print') {
 
 <body>
     <div class="page-header" align="center">
-        <h1>Reporte de Factura de Compras</h1>
+        <h1>Factura de Compras</h1>
     </div>
     <div align="center">
         <label><strong>Factura Nro: </strong> <?= $nro_factura; ?></label><br>

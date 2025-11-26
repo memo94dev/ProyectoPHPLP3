@@ -61,5 +61,31 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                 header("Location: ../../main.php?module=compras&alert=3");
             }
         }
+    } elseif($_GET['act'] == 'anular'){
+        if (isset($_GET['cod_compra'])) {
+            $codigo = $_GET['cod_compra'];
+
+            // Anular cabecera de compra estado = anulado
+            $query = mysqli_query($mysqli, "UPDATE compra SET estado = 'anulado' WHERE cod_compra = $codigo")
+            or die('Error: ' . mysqli_error($mysqli));
+
+            // Consultar detalle de compra
+            $sql = mysqli_query($mysqli, "SELECT * FROM detalle_compra WHERE cod_compra = $codigo");
+            while ($row = mysqli_fetch_assoc($sql)) {
+                $codigo_producto     = $row['cod_producto'];
+                $codigo_deposito     = $row['cod_deposito'];
+                $cantidad            = $row['cantidad'];
+
+                $actualizar_stock = mysqli_query($mysqli, "UPDATE stock SET cantidad = cantidad - $cantidad 
+                                                            WHERE cod_producto = $codigo_producto
+                                                            AND cod_deposito = $codigo_deposito")
+            or die('Error: ' . mysqli_error($mysqli));
+            }
+            if ($query) {
+                header("Location: ../../main.php?module=compras&alert=2");
+            } else {
+                header("Location: ../../main.php?module=compras&alert=3");
+            }
+        }
     }
 }

@@ -58,7 +58,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $query = mysqli_query($mysqli, "SELECT * FROM v_compras")
+                            $query = mysqli_query($mysqli, "SELECT * FROM v_compras WHERE estado = 'activo'")
                                 or die('Error: ' . mysqli_error($mysqli));
                             while ($data = mysqli_fetch_assoc($query)) {
                                 $cod_compra = $data['cod_compra'];
