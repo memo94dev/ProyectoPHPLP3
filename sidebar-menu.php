@@ -36,6 +36,7 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
                     <li><a href="#"><i class="fa fa-circle-o"></i>Proveedor</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>Producto</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de Medida</a></li>
+                    <li><a href="?module=tipo_producto"><i class="fa fa-circle-o"></i>Tipo de Producto</a></li>
                 </ul>
             </a>
         </li>
@@ -113,6 +114,7 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
                     <li><a href="#"><i class="fa fa-circle-o"></i>Proveedor</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>Producto</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i>Unidad de Medida</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>Tipo de Producto</a></li>
                 </ul>
             </a>
         </li>

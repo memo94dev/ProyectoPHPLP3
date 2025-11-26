@@ -54,6 +54,13 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     elseif ($_GET['module'] == 'form_compras') {
         include 'modules/compras/form.php';
     }
+
+    elseif ($_GET['module'] == 'tipo_producto') {
+        include 'modules/tipo_producto/view.php';
+    }
+    elseif ($_GET['module'] == 'form_tipo_producto') {
+        include 'modules/tipo_producto/form.php';
+    }
     
 }
 
