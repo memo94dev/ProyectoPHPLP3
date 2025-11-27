@@ -68,6 +68,13 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     elseif ($_GET['module'] == 'form_unidad_medida') {
         include 'modules/unidad_medida/form.php';
     }
+
+    elseif ($_GET['module'] == 'deposito') {
+        include 'modules/deposito/view.php';
+    }
+    elseif ($_GET['module'] == 'form_deposito') {
+        include 'modules/deposito/form.php';
+    }
     
 }
 

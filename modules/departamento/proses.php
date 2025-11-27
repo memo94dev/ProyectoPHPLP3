@@ -27,7 +27,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                     or die('Error: ' . mysqli_error($mysqli));
 
                 if ($query) {
-                    header("Location: ../../main.php?module=departamento&alert=1");
+                    header("Location: ../../main.php?module=departamento&alert=2");
                 }
             }
         }
