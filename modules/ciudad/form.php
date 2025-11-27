@@ -79,7 +79,7 @@
         </div>
     </section>
 
-<!-- Editar Departamento -->
+<!-- Editar ciudad -->
 <?php } elseif ($_GET['form'] == 'edit') {
     if (isset($_GET['id'])) {
         $id_ciudad = $_GET['id'];
