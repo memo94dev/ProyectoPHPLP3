@@ -38,3 +38,5 @@ $data = mysqli_fetch_assoc($query);
                 <a href="#logout" data-toggle="modal" class="btn btn-default btn-flat" style="width: 80px;">Salir</a>
             </div>
         </li>
+    </ul>
+</li>
