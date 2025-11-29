@@ -60,7 +60,7 @@
                     <div class="icon">
                         <i class="fa fa-cart-plus"></i>
                     </div>
-                    <a href="?module=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
+                    <a href="?module=venta" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>
@@ -214,7 +214,7 @@
                     <div class="icon">
                         <i class="fa fa-cart-plus"></i>
                     </div>
-                    <a href="?module=ventas" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
+                    <a href="?module=venta" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>

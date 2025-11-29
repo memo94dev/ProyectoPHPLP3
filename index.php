@@ -45,6 +45,13 @@
                     Debes ingresar con usuario y contraseña.
                 </div>";
         }
+        elseif ($_GET['alert'] == 4) {
+            echo "<div class='alert alert-warning alert-dismissable'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    <h4><i class='icon fa fa-times-circle'></i> Ha ocurrido un error!</h4>
+                    El usuario se encuentra bloqueado!. Contactese con el administrador del sistema!
+                </div>";
+        }
         ?>
 
         <div class="login-box-body">

@@ -74,7 +74,22 @@ SELECT co.cod_compra, pro.cod_producto, pro.p_descrip, u.u_descrip, tp.t_p_descr
 det.precio, det.cantidad
 FROM detalle_compra det
 JOIN compra co ON co.cod_compra = det.cod_compra
-JOIN producto pro ON co.cod_compra = det.cod_compra
+JOIN producto pro ON pro.cod_compra = det.cod_compra
+JOIN u_medida u ON pro.id_u_medida = u.id_u_medida
+JOIN tipo_producto tp ON pro.cod_tipo_prod = tp.cod_tipo_prod);
+
+CREATE OR REPLACE VIEW v_det_compra AS (
+SELECT 
+    co.cod_compra, 
+    pro.cod_producto, 
+    pro.p_descrip, 
+    u.u_descrip, 
+    tp.t_p_descrip,
+    det.precio, 
+    det.cantidad
+FROM detalle_compra det
+JOIN compra co ON co.cod_compra = det.cod_compra
+JOIN producto pro ON pro.cod_producto = det.cod_producto
 JOIN u_medida u ON pro.id_u_medida = u.id_u_medida
 JOIN tipo_producto tp ON pro.cod_tipo_prod = tp.cod_tipo_prod);
 
@@ -105,3 +120,53 @@ BEGIN
 END$$
 
 DELIMITER ;
+DROP TRIGGER borrar_temp;
+DELIMITER $$
+
+CREATE TRIGGER borrar_temp
+AFTER INSERT ON detalle_compra
+FOR EACH ROW
+BEGIN
+    DELETE FROM tmp;
+END$$
+
+DELIMITER ;
+
+SELECT * FROM v_compras WHERE cod_compra = 1;
+SELECT * FROM v_det_compra WHERE cod_compra = 1;
+
+/* Crear vista de productos */
+CREATE VIEW v_producto AS (
+SELECT p.cod_producto, 
+p.cod_tipo_prod, t.t_p_descrip, 
+p.id_u_medida, u.u_descrip,
+p.p_descrip, p.precio
+FROM producto p
+JOIN tipo_producto t ON p.cod_tipo_prod = t.cod_tipo_prod
+JOIN u_medida u ON p.id_u_medida = u.id_u_medida
+ORDER BY p.cod_producto);
+
+SELECT * FROM v_producto;
+
+SELECT * FROM sysweb.venta;
+CREATE VIEW v_venta AS (
+SELECT v.cod_venta, v.id_cliente, c.ci_ruc, c.cli_nombre, c.cli_apellido, 
+v.fecha, v.hora, v.nro_factura, v.total_venta
+FROM venta v
+JOIN clientes c ON v.id_cliente = c.id_cliente);
+
+SELECT * FROM v_venta;
+
+USE sysweb;
+
+CREATE VIEW v_stock AS(
+SELECT s.cod_deposito, d.descrip, s.cod_producto, p.p_descrip, s.cantidad,
+u.id_u_medida, u.u_descrip, tp.cod_tipo_prod, tp.t_p_descrip
+FROM stock s
+JOIN deposito d ON s.cod_deposito = d.cod_deposito
+JOIN producto p ON s.cod_producto = p.cod_producto
+JOIN u_medida u ON p.id_u_medida = u.id_u_medida
+JOIN tipo_producto tp ON tp.cod_tipo_prod = p.cod_tipo_prod
+ORDER BY s.cod_deposito);
+
+SELECT * FROM v_stock;

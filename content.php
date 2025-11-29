@@ -89,6 +89,17 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     elseif ($_GET['module'] == 'form_producto') {
         include 'modules/producto/form.php';
     }
+
+    elseif ($_GET['module'] == 'venta') {
+        include 'modules/venta/view.php';
+    }
+    elseif ($_GET['module'] == 'form_venta') {
+        include 'modules/venta/form.php';
+    }
+
+    elseif ($_GET['module'] == 'stock') {
+        include 'modules/stock/view.php';
+    }
     
 }
 

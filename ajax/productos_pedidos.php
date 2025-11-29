@@ -4,7 +4,7 @@ require_once "../config/database.php";
 
 $action = (isset($_REQUEST['action']) && $_REQUEST['action'] != NULL) ? $_REQUEST['action'] : '';
 if ($action == 'ajax') {
-    // escaping, additionally removing everything that could be (html/javascript-) code
+    
     $x = mysqli_real_escape_string($mysqli, (strip_tags($_REQUEST['x'], ENT_QUOTES)));
     $aColumns = array('cod_producto', 'cod_tipo_prod', 'id_u_medida', 'p_descrip', 'precio'); // columnas de busqueda
     $sTable = "producto";
