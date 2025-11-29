@@ -53,7 +53,7 @@ if ($action == 'ajax') {
                     $cod_producto = $row['cod_producto'];
                     $pdescrip = $row['p_descrip'];
 
-                    $sql_stock = mysqli_query($mysqli, "SELECT cantidad FROM stock WHERE cod_producto = '$cod_producto' AND cod_deposito = '$cod_deposito'");
+                    $sql_stock = mysqli_query($mysqli, "SELECT cantidad FROM stock WHERE cod_producto = '$cod_producto'");
                     if ($row_stock = mysqli_fetch_assoc($sql_stock)) {
                         $cantidad_stock = $row_stock['cantidad'];
                     } else {

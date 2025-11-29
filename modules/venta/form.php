@@ -61,7 +61,8 @@
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Deposito</label>
                                     <div class="col-sm-5">
-                                        <select required class="chosen-select" data-placeholder="Seleccione un proveedor" autocomplete="off" name="cod_deposito" id="">
+                                        <select id="selectId" required class="chosen-select" data-placeholder="Seleccione un proveedor" 
+                                        autocomplete="off" name="cod_deposito">
                                             <option value=""></option>
                                             <?php
                                             $query_dep = mysqli_query($mysqli, "SELECT cod_deposito, descrip 
@@ -119,29 +120,30 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <hr>
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <label class="col-sm-2 control-label">Productos</label>
-                                    <div class="col-sm-3">
-                                        <button class="btn btn-info" data-toggle="modal" type="button"
-                                            data-target="#myModal">
-                                            <span class="glyphicon glyphicon-plus">Agregar Productos</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="resultados" class='col-md-9'>
-                                <!-- Carga los datos ajax -->
-                            </div>
-                            <div class="box-footer">
+                                <hr>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                                        <a href="?module=venta" class="btn btn-default btn-reset">Cancelar</a>
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <label class="col-sm-2 control-label">Productos</label>
+                                        <div class="col-sm-3">
+                                            <button id="btnAgregar" class="btn btn-info" data-toggle="modal" type="button"
+                                                data-target="#myModal">
+                                                <span class="glyphicon glyphicon-plus">Agregar Productos</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="resultados" class='col-md-9'>
+                                    <!-- Carga los datos ajax -->
+                                </div>
+                                <div class="box-footer">
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
+                                            <a href="?module=venta" class="btn btn-default btn-reset">Cancelar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -165,11 +167,12 @@
 
         // Cuando el modal ya está completamente visible
         $('#myModal').on('shown.bs.modal', function() {
-            $('#x').focus(); 
+            $('#x').focus();
         });
     });
 
     function load(page) {
+        var x = $("#cod_deposito").val();
         var x = $("#x").val();
         var parametros = {
             "action": "ajax",
@@ -244,24 +247,33 @@
     }
 </script>
 
+<!-- Modal -->
 <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="myModalLabel">Buscar Productos</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" action="">
                     <div class="form-group">
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="x" placeholder="Buscar por nombre o codigo" onkeyup="load(1);">
+                        <!-- Input de búsqueda -->
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="x"
+                                placeholder="Buscar por nombre o código" onkeyup="load(1);">
                         </div>
-                        <button type="button" class="btn btn-default" onclick="load(1);">
-                            <span class="glyphicon glyphicon-search">Buscar</span>
-                        </button>
+                        <!-- Botón de búsqueda -->
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-default" onclick="load(1);">
+                                <span class="glyphicon glyphicon-search"></span> Buscar
+                            </button>
+                        </div>
                     </div>
                 </form>
+
                 <div id="loader" style="position: absolute; text-align: center; top: 55px; width: 100%; display:none"></div>
                 <div class="outer_div">
                     <!-- datos por ajax -->
