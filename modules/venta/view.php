@@ -25,7 +25,7 @@
                             Venta registrada correctamente.
                           </div>";
             } elseif ($_GET['alert'] == 2) {
-                echo "<div class='alert alert-danger alert-dismissable'>
+                echo "<div class='alert alert-warning alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                             <h4><i class='icon fa fa-check-circle'></i> Exito!</h4>
                             La venta ha sido <strong>Anulada correctamente.</strong>

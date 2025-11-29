@@ -235,7 +235,7 @@
                     <div class="icon">
                         <i class="fa fa-area-chart"></i>
                     </div>
-                    <a href="?modules=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
+                    <a href="?module=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
                         <i class="fa fa-plus"></i></a>
                 </div>
             </div>

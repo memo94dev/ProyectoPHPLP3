@@ -170,3 +170,7 @@ JOIN tipo_producto tp ON tp.cod_tipo_prod = p.cod_tipo_prod
 ORDER BY s.cod_deposito);
 
 SELECT * FROM v_stock;
+
+SELECT * FROM v_stock WHERE cod_deposito = 3;
+
+SELECT SUM(cantidad) AS cantidad FROM stock;

@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    <form role="form" class="form-horizontal" action="modules/venta/proses.php?act=insert" method="POST">
+                    <form role="form" class="form-horizontal" action="modules/venta/proses2.php?act=insert" method="POST">
                         <div class="box-body">
                             <?php  // consulta para obtener el siguiente codigo de ciudad
                             $query_id = mysqli_query($mysqli, "SELECT MAX(cod_venta) as id FROM venta")
