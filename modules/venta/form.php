@@ -53,7 +53,10 @@
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control date-picker" name="hora"
                                             date-date-format="dd-mm-yyyy" autocomplete="off"
-                                            value="<?php echo date("H:i:s") ?>" required readonly>
+                                            value="<?php                                                
+                                                date_default_timezone_set("America/Asuncion");
+                                                echo date("H:i:s");
+                                            ?>" required readonly>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +64,8 @@
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Deposito</label>
                                     <div class="col-sm-5">
-                                        <select id="selectId" required class="chosen-select" data-placeholder="Seleccione un proveedor" 
-                                        autocomplete="off" name="cod_deposito">
+                                        <select id="selectId" required class="chosen-select" data-placeholder="Seleccione un proveedor"
+                                            autocomplete="off" name="cod_deposito">
                                             <option value=""></option>
                                             <?php
                                             $query_dep = mysqli_query($mysqli, "SELECT cod_deposito, descrip 
@@ -102,48 +105,30 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                             <div class="form-group">
-                                <!-- <div class="col-sm-offset-3 col-sm-9">
-                                    <label class="col-sm-2 control-label">Deposito</label>
-                                    <div class="col-sm-5">
-                                        <select required class="chosen-select" data-placeholder="Seleccione un proveedor" autocomplete="off" name="cod_deposito" id="">
-                                            <option value=""></option>
-                                            <?php
-                                            $query_dep = mysqli_query($mysqli, "SELECT cod_deposito, descrip 
-                                                                                FROM deposito ORDER BY cod_deposito ASC")
-                                                or die('Error: ' . mysqli_error($mysqli));
-                                            while ($data_dep = mysqli_fetch_assoc($query_dep)) {
-                                                echo "<option value=\"$data_dep[cod_deposito]\"> $data_dep[descrip]</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div> -->
-                                <hr>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-9">
-                                        <label class="col-sm-2 control-label">Productos</label>
-                                        <div class="col-sm-3">
-                                            <button id="btnAgregar" class="btn btn-info" data-toggle="modal" type="button"
-                                                data-target="#myModal">
-                                                <span class="glyphicon glyphicon-plus">Agregar Productos</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="resultados" class='col-md-9'>
-                                    <!-- Carga los datos ajax -->
-                                </div>
-                                <div class="box-footer">
-                                    <div class="form-group">
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                                            <a href="?module=venta" class="btn btn-default btn-reset">Cancelar</a>
-                                        </div>
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <label class="col-sm-2 control-label">Productos</label>
+                                    <div class="col-sm-3">
+                                        <button id="btnAgregar" class="btn btn-info" data-toggle="modal" type="button"
+                                            data-target="#myModal">
+                                            <span class="glyphicon glyphicon-plus">Agregar Productos</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                            <div id="resultados" class='col-md-9'>
+                                <!-- Carga los datos ajax -->
+                            </div>
+                            <div class="box-footer">
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
+                                        <a href="?module=venta" class="btn btn-default btn-reset">Cancelar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

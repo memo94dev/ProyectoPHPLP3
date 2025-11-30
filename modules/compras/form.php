@@ -53,7 +53,10 @@
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control date-picker" name="hora"
                                             date-date-format="dd-mm-yyyy" autocomplete="off"
-                                            value="<?php echo date("H:i:s") ?>" required readonly>
+                                            value="<?php 
+                                                date_default_timezone_set("America/Asuncion");
+                                                echo date("H:i:s"); ?>" 
+                                            required readonly>
                                     </div>
                                 </div>
                             </div>

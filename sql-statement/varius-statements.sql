@@ -174,3 +174,17 @@ SELECT * FROM v_stock;
 SELECT * FROM v_stock WHERE cod_deposito = 3;
 
 SELECT SUM(cantidad) AS cantidad FROM stock;
+
+/* Vista de detalle de venta */
+CREATE VIEW v_det_venta AS (
+SELECT dv.cod_producto, p.p_descrip, um.u_descrip, dv.cod_venta, 
+dv.cod_deposito, d.descrip, tp.t_p_descrip, 
+dv.det_cantidad, dv.det_precio_unit,
+(dv.det_cantidad * dv.det_precio_unit) AS subtotal
+FROM det_venta dv
+JOIN deposito d ON dv.cod_deposito = d.cod_deposito
+JOIN producto p ON dv.cod_producto = p.cod_producto
+JOIN tipo_producto tp ON p.cod_tipo_prod = tp.cod_tipo_prod
+JOIN u_medida um ON p.id_u_medida = um.id_u_medida);
+
+SELECT * FROM v_det_venta;

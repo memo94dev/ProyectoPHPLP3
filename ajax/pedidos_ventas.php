@@ -84,7 +84,8 @@ if ($action == 'ajax') {
                                 <?php echo ($cantidad_stock <= 0) ? 'disabled' : ''; ?>>
                         </td>
                         <td class="col-xs-2">
-                            <input type="text" class="form-control" style="text-align:right" id="precio_compra_<?php echo $cod_producto; ?>" value="<?php echo $precio_compra; ?>">
+                            <input type="text" class="form-control" style="text-align:right" id="precio_compra_<?php echo $cod_producto; ?>"
+                                value="<?php echo ($precio_compra * 1.25); ?>" disabled>
                         </td>
                         <td>
                             <span class="pull-right">
