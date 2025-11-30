@@ -18,44 +18,53 @@
                     <!-- Filtro por Deposito -->
                     <form role="form" class="form-horizontal" method="POST">
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <label class="col-sm-2 control-label">Deposito</label>
-                                <div class="col-sm-5">
-                                    <select required class="form-control chosen-select" data-placeholder="Seleccione un proveedor" autocomplete="off" name="cod_deposito" id="">
-                                        <option value=""></option>
-                                        <?php
-                                        $query_dep = mysqli_query($mysqli, "SELECT cod_deposito, descrip 
-                                                                                FROM deposito ORDER BY cod_deposito ASC")
-                                            or die('Error: ' . mysqli_error($mysqli));
-                                        while ($data_dep = mysqli_fetch_assoc($query_dep)) {
-                                            echo "<option value=\"$data_dep[cod_deposito]\"> $data_dep[descrip]</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3"> <!-- Verificar ubicacion en linea,se desborda -->
-                                    <button style="width: 180px" type="submit" class="btn btn-primary btn-social btn-submit">
-                                        <i class="fa fa-file-text-o ico-title"></i>Buscar Deposito
-                                    </button>
-                                </div>
-                            </div>
+                            <label class="control-label">Depósito</label>
+                            <select class="form-control chosen-select"
+                                data-placeholder="Seleccione un depósito"
+                                autocomplete="off" name="cod_deposito">
+                                <option value=""></option>
+                                <?php
+                                $query_dep = mysqli_query($mysqli, "SELECT cod_deposito, descrip  
+                                            FROM deposito ORDER BY cod_deposito ASC")
+                                    or die('Error: ' . mysqli_error($mysqli));
+                                while ($data_dep = mysqli_fetch_assoc($query_dep)) {
+                                    echo "<option value=\"$data_dep[cod_deposito]\"> $data_dep[descrip]</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Producto</label>
+                            <select class="form-control chosen-select"
+                                data-placeholder="Seleccione un producto"
+                                autocomplete="off" name="cod_producto">
+                                <option value=""></option>
+                                <?php
+                                $query_pro = mysqli_query($mysqli, "SELECT cod_producto, p_descrip  
+                                            FROM producto ORDER BY cod_producto ASC")
+                                    or die('Error: ' . mysqli_error($mysqli));
+                                while ($data_pro = mysqli_fetch_assoc($query_pro)) {
+                                    echo "<option value=\"$data_pro[cod_producto]\"> $data_pro[p_descrip]</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button style="width: 100px" type="submit"
+                                class="btn btn-primary btn-social btn-submit">
+                                <i class="fa fa-file-text-o ico-title"></i> Filtrar
+                            </button>
                         </div>
                     </form>
 
                     <table id="dataTables1" class="table table-bordered table-striped table-hover">
-                        <?php                        
-                        if (!empty($_POST['cod_deposito'])) {
-                            $cod_deposito = $_POST['cod_deposito'];
-                        }else{
-                            $cod_deposito = 1;
-                        }
-                        $query = mysqli_query($mysqli, "SELECT * FROM deposito WHERE cod_deposito = $cod_deposito")
-                                or die('Error: ' . mysqli_error($mysqli));
-                            while ($data = mysqli_fetch_assoc($query)) {
-                                $descrip = $data['descrip'];
-                            }                        
+                        <?php
+                        // $fil_cod_producto = !empty($_POST['cod_producto']) ? $_POST['cod_producto'] : '';
+                        // $fil_cod_deposito = !empty($_POST['cod_deposito']) ? $_POST['cod_deposito'] : '';
                         ?>
-                        <h2>Stock de Productos: <?= $descrip ?></h2>
+                        <h2>Stock de Productos:</h2>
                         <thead>
                             <tr>
                                 <th class="center">Deposito</th>
@@ -67,8 +76,19 @@
                         </thead>
                         <tbody>
                             <?php
+                            // $fil_cod_producto = $_POST['cod_producto'] ? $_POST['cod_producto'] : '';
+                            // $fil_cod_deposito = $_POST['cod_deposito'] || '';
+                            if (!empty($_POST['cod_deposito']) and !empty($_POST['cod_producto'])) {
+                                $sql = "SELECT * FROM v_stock WHERE cod_deposito = $_POST[cod_deposito] AND cod_producto = $_POST[cod_producto]";
+                            } elseif (!empty($_POST['cod_deposito']) and empty($_POST['cod_producto'])) {
+                                $sql = "SELECT * FROM v_stock WHERE cod_deposito = $_POST[cod_deposito]";
+                            } elseif (empty($_POST['cod_deposito']) and !empty($_POST['cod_producto'])) {
+                                $sql = "SELECT * FROM v_stock WHERE cod_producto = $_POST[cod_producto]";
+                            } else {
+                                $sql = "SELECT * FROM v_stock";
+                            }
                             $no = 1;
-                            $query = mysqli_query($mysqli, "SELECT * FROM v_stock WHERE cod_deposito = $cod_deposito")
+                            $query = mysqli_query($mysqli, $sql)
                                 or die('Error: ' . mysqli_error($mysqli));
                             while ($data = mysqli_fetch_assoc($query)) {
                                 $cod_producto = $data['cod_producto'];
@@ -78,13 +98,14 @@
                                 $t_p_descrip = $data['t_p_descrip'];
                                 $u_descrip = $data['u_descrip'];
                                 $cantidad = $data['cantidad'];
-                                echo "<tr>
-                                      <td class='center'>$descrip</td>
-                                      <td class='center'>$t_p_descrip</td>
-                                      <td class='center'>$u_descrip</td>
-                                      <td class='center'>$p_descrip</td>
-                                      <td class='center'>$cantidad</td>
-                                      </tr>";
+                                echo "
+                                <tr>
+                                    <td class='center'>$descrip</td>
+                                    <td class='center'>$t_p_descrip</td>
+                                    <td class='center'>$u_descrip</td>
+                                    <td class='center'>$p_descrip</td>
+                                    <td class='center'>$cantidad</td>
+                                </tr>";
                             } ?>
                         </tbody>
                     </table>
