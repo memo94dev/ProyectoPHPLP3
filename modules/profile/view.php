@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SESSION['id_user'])) {
-    $query = mysqli_query($mysqli, "SELECT * FROM usuarios WHERE id_user = '$_SESSION[id_user]'")
+    $query = mysqli_query($mysqli, "SELECT * FROM v_usuarios WHERE id_user = '$_SESSION[id_user]'")
     or die('Error: ' . mysqli_error($mysqli));
 
     $data = mysqli_fetch_assoc($query);
@@ -104,7 +104,7 @@ if (isset($_SESSION['id_user'])) {
                             <div class="col-sm-offset-3 col-sm-9">
                                 <label class="col-sm-2 control-label">Permisos de Acceso</label>
                                 <div class="col-sm-5">
-                                    <input disabled type="text" class="form-control" name="name_user" value="<?php echo $data['permisos_acceso']; ?>">
+                                    <input disabled type="text" class="form-control" name="name_user" value="<?php echo $data['per_descrip']; ?>">
                                 </div>
                             </div>
                         </div>

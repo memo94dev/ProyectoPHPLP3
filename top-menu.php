@@ -2,7 +2,7 @@
 
 include 'config/database.php';
 
-$query = mysqli_query($mysqli, "SELECT id_user, name_user, foto, permisos_acceso FROM usuarios WHERE id_user = '$_SESSION[id_user]'")
+$query = mysqli_query($mysqli, "SELECT * FROM v_usuarios WHERE id_user = '$_SESSION[id_user]'")
     or die('Error: ' . mysqli_error($mysqli));
 $data = mysqli_fetch_assoc($query);
 
@@ -27,7 +27,8 @@ $data = mysqli_fetch_assoc($query);
             <?php } ?>
             <p>
                 <?php echo $data['name_user']; ?>
-                <small><?php echo $_SESSION['permisos_acceso']; ?></small>
+                <small><?php echo $data['email']; ?></small>
+                <small><?php echo $data['per_descrip']; ?></small>
             </p>
         </li>
         <li class="user-footer">
