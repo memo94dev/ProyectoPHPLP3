@@ -77,7 +77,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $query = mysqli_query($mysqli, "SELECT * FROM usuarios ORDER BY username ASC")
+                            $query = mysqli_query($mysqli, "SELECT * FROM v_usuarios ORDER BY username ASC")
                                 or die('Error: ' . mysqli_error($mysqli));
                             while ($data = mysqli_fetch_assoc($query)) {
                                 echo "<tr>
@@ -93,7 +93,7 @@
                                 <?php }
                                 echo "<td class='center'>$data[username]</td>
                                       <td class='center'>$data[name_user]</td>
-                                      <td class='center'>$data[permisos_acceso]</td>
+                                      <td class='center'>$data[per_descrip]</td>
                                       <td class='center'>$data[status]</td>
                                       <td class='center' width='100'>
                                       <div>";

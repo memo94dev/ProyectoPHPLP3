@@ -65,9 +65,9 @@
                                     <div class="col-sm-5">
                                         <select style="cursor: pointer;" class="form-control" name="permisos_acceso" required>
                                             <option value="" disabled selected>Seleccione una opción</option>
-                                            <option value="Super Admin">Administrador</option>
-                                            <option value="Compras">Compras</option>
-                                            <option value="Ventas">Ventas</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Compras</option>
+                                            <option value="3">Ventas</option>
                                         </select>
                                     </div>
                                 </div>
@@ -178,9 +178,9 @@
                                     <div class="col-sm-5">
                                         <select style="cursor: pointer;" class="form-control" name="permisos_acceso" required>
                                             <option value="" <?php if ($data['permisos_acceso'] == ""){ echo "selected"; }?> disabled>Seleccione una opción</option>
-                                            <option value="Super Admin" <?php if ($data['permisos_acceso'] == "Super Admin"){ echo "selected"; }?>>Administrador</option>
-                                            <option value="Compras" <?php if ($data['permisos_acceso'] == "Compras"){ echo "selected"; }?>>Compras</option>
-                                            <option value="Ventas" <?php if ($data['permisos_acceso'] == "Ventas"){ echo "selected"; }?>>Ventas</option>
+                                            <option value="1" <?php if ($data['permisos_acceso'] == "1"){ echo "selected"; }?>>Administrador</option>
+                                            <option value="2" <?php if ($data['permisos_acceso'] == "2"){ echo "selected"; }?>>Compras</option>
+                                            <option value="3" <?php if ($data['permisos_acceso'] == "3"){ echo "selected"; }?>>Ventas</option>
                                         </select>
                                     </div>
                                 </div>

@@ -31,6 +31,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                 $email              = mysqli_real_escape_string($mysqli, trim($_POST['email']));
                 $telefono           = mysqli_real_escape_string($mysqli, trim($_POST['telefono']));
                 $permisos_acceso    = mysqli_real_escape_string($mysqli, trim($_POST['permisos_acceso']));
+                print_r($permisos_acceso);
                 // File upload configuration
                 $name_file = $_FILES['foto']['name'];
                 $size_file = $_FILES['foto']['size'];
@@ -60,7 +61,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                                                                 name_user = '$name_user',
                                                                 email = '$email',
                                                                 telefono = '$telefono',
-                                                                permisos_acceso = '$permisos_acceso'
+                                                                permisos_acceso = $permisos_acceso
                                                         WHERE id_user = '$id_user'")
                         or die('Error: ' . mysqli_error($mysqli));
                     if ($query) {
