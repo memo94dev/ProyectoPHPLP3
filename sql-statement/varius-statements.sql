@@ -188,3 +188,60 @@ JOIN tipo_producto tp ON p.cod_tipo_prod = tp.cod_tipo_prod
 JOIN u_medida um ON p.id_u_medida = um.id_u_medida);
 
 SELECT * FROM v_det_venta;
+
+USE sysweb;
+ALTER TABLE usuarios ADD UNIQUE (permisos_acceso);
+ALTER TABLE usuarios MODIFY permisos_acceso INT;
+CREATE TABLE permisos(
+	id_permisos INT NOT NULL PRIMARY KEY,
+    per_descrip VARCHAR(25),
+    FOREIGN KEY (id_permisos) REFERENCES usuarios (permisos_acceso) ON UPDATE CASCADE ON DELETE NO ACTION
+);
+DROP TABLE permisos;
+
+INSERT INTO permisos 
+	(permisos_acceso)
+VALUES
+	('admin'),
+	('compra'),
+	('venta');
+    
+SELECT * FROM permisos;
+    
+SELECT u.id_user, u.name_user, u.email, u.telefono, u.foto, p.per_descrip, u.status
+FROM usuarios u
+JOIN permisos p ON u.permisos_acceso = p.id_permisos;
+
+CREATE VIEW v_usuarios AS (
+SELECT u.id_user, u.name_user, u.email, u.telefono, u.foto, p.per_descrip, u.status
+FROM usuarios u
+JOIN permisos p ON u.permisos_acceso = p.id_permisos
+ORDER BY u.id_user);
+SELECT * FROM v_usuarios;
+
+SELECT * FROM v_usuarios WHERE id_user = 1;
+
+SHOW INDEXES FROM usuarios;
+ALTER TABLE usuarios DROP INDEX permisos_acceso;
+
+SELECT CONSTRAINT_NAME, TABLE_NAME 
+FROM information_schema.KEY_COLUMN_USAGE 
+WHERE TABLE_NAME = 'usuarios';
+
+ALTER TABLE permisos DROP FOREIGN KEY permisos_acceso;
+ALTER TABLE permisos DROP FOREIGN KEY permisos_ibfk_1;
+
+ALTER TABLE permisos 
+ADD COLUMN permisos_acceso INT;
+
+ALTER TABLE permisos 
+ADD CONSTRAINT fk_permisos_acceso 
+FOREIGN KEY (permisos_acceso) 
+REFERENCES usuarios(permisos_acceso) 
+ON UPDATE CASCADE 
+ON DELETE NO ACTION;
+    
+    
+    
+    
+    

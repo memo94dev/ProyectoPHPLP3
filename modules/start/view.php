@@ -1,4 +1,4 @@
-<?php if ($_SESSION['permisos_acceso'] == 'Super Admin') { ?>
+<?php if ($_SESSION['permisos_acceso'] == '1') { ?>
 
     <section class="content-header">
         <h1>
@@ -25,66 +25,15 @@
 
             <!-- Bloque Compras -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #00c0ef;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Compras</strong>
-                        <ul>
-                            <li>Registrar</li>
-                            <li>la compra</li>
-                            <li>del producto</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="glyphicon glyphicon-piggy-bank"></i>
-                    </div>
-                    <a href="?module=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_compras.php"); ?>
 
             <!-- Bloque Ventas -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #00a65a;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Ventas</strong>
-                        <ul>
-                            <li>Registrar</li>
-                            <li>Ventas</li>
-                            <li>de productos</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-cart-plus"></i>
-                    </div>
-                    <a href="?module=venta" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_ventas.php"); ?>
 
             <!-- Bloque Stock -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #f39c12;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Stock</strong>
-                        <ul>
-                            <li>Visualizar</li>
-                            <li>Stock</li>
-                            <li>de productos</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-area-chart"></i>
-                    </div>
-                    <a href="?module=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_stock.php"); ?>
 
             <div class="col-xl-4 col-lg-5">
                 <div class="card no-shadow mb-4">
@@ -96,7 +45,7 @@
 
     </section>
 
-<?php } elseif ($_SESSION['permisos_acceso'] == 'Compras') { ?>
+<?php } elseif ($_SESSION['permisos_acceso'] == '2') { ?>
 
     <section class="content-header">
         <h1>
@@ -123,45 +72,11 @@
 
             <!-- Bloque Compras -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #00c0ef;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Compras</strong>
-                        <ul>
-                            <li>Registrar</li>
-                            <li>la compra</li>
-                            <li>del producto</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="glyphicon glyphicon-piggy-bank"></i>
-                    </div>
-                    <a href="?module=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_compras.php"); ?>
 
             <!-- Bloque Stock -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #f39c12;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Stock</strong>
-                        <ul>
-                            <li>Visualizar</li>
-                            <li>Stock</li>
-                            <li>de productos</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-area-chart"></i>
-                    </div>
-                    <a href="?module=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_stock.php"); ?>
 
             <div class="col-xl-4 col-lg-5">
                 <div class="card no-shadow mb-4">
@@ -173,7 +88,7 @@
 
     </section>
 
-<?php } elseif ($_SESSION['permisos_acceso'] == 'Ventas') { ?>
+<?php } elseif ($_SESSION['permisos_acceso'] == '3') { ?>
 
     <section class="content-header">
         <h1>
@@ -200,45 +115,11 @@
 
             <!-- Bloque Ventas -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #00a65a;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Ventas</strong>
-                        <ul>
-                            <li>Registrar</li>
-                            <li>Ventas</li>
-                            <li>de productos</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-cart-plus"></i>
-                    </div>
-                    <a href="?module=venta" class="small-box-footer" title="Registrar Ventas" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_ventas.php"); ?>
 
             <!-- Bloque Stock -->
 
-            <div class="col-lg-4 col-xs-6">
-                <div style="background-color: #f39c12;" class="small-box">
-                    <div class="inner">
-                        <p><strong>Stock</strong>
-                        <ul>
-                            <li>Visualizar</li>
-                            <li>Stock</li>
-                            <li>de productos</li>
-                        </ul>
-                        </p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-area-chart"></i>
-                    </div>
-                    <a href="?module=stock" class="small-box-footer" title="Visualizar Stock" data-toggle="tooltip">
-                        <i class="fa fa-plus"></i></a>
-                </div>
-            </div>
+            <?php include("templates/ref_movi_stock.php"); ?>
 
             <div class="col-xl-4 col-lg-5">
                 <div class="card no-shadow mb-4">
