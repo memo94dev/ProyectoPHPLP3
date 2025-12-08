@@ -1,7 +1,7 @@
 <?php
 
 // Sidebar menu para niveles de usuario Super Admin
-if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
+if (($_SESSION['permisos_acceso'] == 1))  { ?>
     <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <?php
@@ -15,70 +15,18 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
             <a href="?module=start"><i class="fa fa-home"></i>Inicio</a>
         </li>
 
-        <?php // if ($_GET['module'] == 'start') { 
-        ?>
-
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
-                    <li><a href="?module=ciudad"><i class="fa fa-circle-o"></i>Ciudad</a></li>
-                </ul>
-            </a>
-        </li>
-
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales de Compra</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
-                    <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
-                    <li><a href="?module=producto"><i class="fa fa-circle-o"></i>Producto</a></li>
-                    <li><a href="?module=unidad_medida"><i class="fa fa-circle-o"></i>Unidad de Medida</a></li>
-                    <li><a href="?module=tipo_producto"><i class="fa fa-circle-o"></i>Tipo de Producto</a></li>
-                </ul>
-            </a>
-        </li>
-
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales de Ventas</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=clientes"><i class="fa fa-circle-o"></i>Clientes</a></li>
-                </ul>
-            </a>
-        </li>
-
+        <?php include("templates/generales.php"); ?>
+        <?php include("templates/compra.php"); ?>
+        <?php include("templates/venta.php"); ?>
         <!-- Administrar Usuarios -->
-        <?php if ($_GET['module'] == "user" || $_GET['module'] == "form_user") { ?>
-            <li class="active">
-                <a href="?module=user"><i class="fa fa-user"></i>Administrar Usuarios</a>
-            </li>
-        <?php } else { ?>
-            <li>
-                <a href="?module=user"><i class="fa fa-user"></i>Administrar Usuarios</a>
-            </li>
-        <?php } ?>
-
-        <!-- Administrar contraseñas -->
-        <?php if ($_GET['module'] == "password") { ?>
-            <li class="active">
-                <a href="?module=password"><i class="fa fa-lock"></i>Cambiar Contraseña</a>
-            </li>
-        <?php } else { ?>
-            <li>
-                <a href="?module=password"><i class="fa fa-lock"></i>Cambiar Contraseña</a>
-            </li>
-        <?php } ?>
-
-        <?php //} 
-        ?>
+        <?php include("templates/admin_user.php"); ?>
+        <!-- Administrar contrasenha -->
+        <?php include("templates/admin_password.php"); ?>
 
     </ul>
 
-<!-- // Sidebar menu para niveles de usuario Compras -->
-<?php } else if (($_SESSION['permisos_acceso'] == 'Compras')) { ?>
+    <!-- // Sidebar menu para niveles de usuario Compras -->
+<?php } else if (($_SESSION['permisos_acceso'] == 2)) { ?>
 
     <ul class="sidebar-menu">
         <li class="header">Menu</li>
@@ -93,63 +41,16 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
             <a href="?module=start"><i class="fa fa-home"></i>Inicio</a>
         </li>
 
-        <?php // if ($_GET['module'] == 'start') { 
-        ?>
-
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
-                    <li><a href="?module=ciudad"><i class="fa fa-circle-o"></i>Ciudad</a></li>
-                </ul>
-            </a>
-        </li>
-
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales de Compra</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=deposito"><i class="fa fa-circle-o"></i>Deposito</a></li>
-                    <li><a href="?module=proveedor"><i class="fa fa-circle-o"></i>Proveedor</a></li>
-                    <li><a href="?module=producto"><i class="fa fa-circle-o"></i>Producto</a></li>
-                    <li><a href="?module=unidad_medida"><i class="fa fa-circle-o"></i>Unidad de Medida</a></li>
-                    <li><a href="?module=tipo_producto"><i class="fa fa-circle-o"></i>Tipo de Producto</a></li>
-                </ul>
-            </a>
-        </li>
+        <?php include("templates/generales.php"); ?>
+        <?php include("templates/compra.php"); ?>
 
         <!-- Administrar contraseñas también para Compras -->
         <li class="<?php echo ($_GET['module'] == "password") ? 'active' : ''; ?>">
             <a href="?module=password"><i class="fa fa-lock"></i>Cambiar Contraseña</a>
         </li>
     </ul>
-<?php } else if (($_SESSION['permisos_acceso'] == 'Compras')) { ?>
-    <ul class="sidebar-menu">
-        <li class="header">Menu</li>
-        <?php
-        if ($_GET['module'] == 'start') {
-            $active_home = 'active';
-        } else {
-            $active_home = '';
-        }
-        ?>
-        <li class="<?php echo $active_home; ?>">
-            <a href="?module=start"><i class="fa fa-home"></i>Inicio</a>
-        </li>
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
-                    <li><a href="?module=ciudad"><i class="fa fa-circle-o"></i>Ciudad</a></li>
-                </ul>
-            </a>
-        </li>
 
-    </ul>
-
-<?php } else if (($_SESSION['permisos_acceso'] == 'Ventas')) { ?>
+<?php } else if (($_SESSION['permisos_acceso'] == 3)) { ?>
     <ul class="sidebar-menu">
         <li class="header">Menu</li>
         <?php
@@ -166,25 +67,9 @@ if (($_SESSION['permisos_acceso'] == 'Super Admin')) { ?>
         <?php // if ($_GET['module'] == 'start') { 
         ?>
 
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales Generales</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=departamento"><i class="fa fa-circle-o"></i>Departamento</a></li>
-                    <li><a href="?module=ciudad"><i class="fa fa-circle-o"></i>Ciudad</a></li>
-                </ul>
-            </a>
-        </li>
+        <?php include("templates/generales.php"); ?>
+        <?php include("templates/venta.php"); ?>
 
-        <li class="treeview">
-            <a href="javascript:void(0)">
-                <i class="fa fa-file-text"></i><span>Referenciales de Ventas</span><i class="fa fa-angle-left pull-right"></i>
-                <ul class="treeview-menu">
-                    <li><a href="?module=clientes"><i class="fa fa-circle-o"></i>Clientes</a></li>
-                </ul>
-            </a>
-        </li>
-        
         <!-- Administrar contraseñas -->
         <?php if ($_GET['module'] == "password") { ?>
             <li class="active">
