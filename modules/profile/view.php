@@ -119,7 +119,7 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="box-footer">
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-12" style="text-align: center;">
                                     <input type="submit" class="btn btn-primary btn-submit" name="Modificar" value="Modificar">
                                     <a href="?module=start" class="btn btn-default btn-reset">Salir</a>
                                 </div>

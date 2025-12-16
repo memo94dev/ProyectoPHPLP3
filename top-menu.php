@@ -36,7 +36,7 @@ $data = mysqli_fetch_assoc($query);
                 <a href="?module=profile" class="btn btn-default btn-flat" style="width: 80px;">Perfil</a>
             </div>
             <div class="pull-right">
-                <a href="#logout" data-toggle="modal" class="btn btn-default btn-flat" style="width: 80px;">Salir</a>
+                <a href="#logout" data-toggle="modal" class="btn btn-danger btn-flat" style="width: 80px;">Salir</a>
             </div>
         </li>
     </ul>
