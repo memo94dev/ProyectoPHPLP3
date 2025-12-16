@@ -240,6 +240,16 @@ FOREIGN KEY (permisos_acceso)
 REFERENCES usuarios(permisos_acceso) 
 ON UPDATE CASCADE 
 ON DELETE NO ACTION;
+
+SELECT * FROM usuarios WHERE (username = 'guille.work.94@gmail.com' OR email = 'guille.work.94@gmail.com')
+                                    AND password = md5('1')
+                                    AND status='activo';
+                                    
+SELECT * FROM usuarios WHERE username = 'memo' 
+                                    AND password = '1' 
+                                    AND status='activo';
+                                    
+SELECT * FROM usuarios WHERE password = '1';
     
     
     

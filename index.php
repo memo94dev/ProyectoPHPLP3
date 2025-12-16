@@ -57,7 +57,7 @@
         <div class="login-box-body">
             <p class="login-box-msg"><i class="fa fa-user icon-tittle"></i>Por favor inicie sesión</p>
             <br>
-            <form action="login-check.php" method="POST">
+            <form action="login-check2.php" method="POST">
                 <div class="form-group has-feedback">
                     <input type="text" class="form-control" name="username" placeholder="Usuario" autocomplete="off" required>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>

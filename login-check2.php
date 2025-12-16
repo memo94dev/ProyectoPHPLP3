@@ -21,7 +21,7 @@
 //         $_SESSION['username']           = $data['username'];
 //         $_SESSION['permisos_acceso']    = $data['permisos_acceso'];
 //         //echo "Bienvenido " . $_SESSION['name_user'];
-        
+
 //         header("Location: main.php?module=start");
 //     } else {
 //         header("Location: index.php?alert=1");
@@ -41,6 +41,7 @@ if (!isset($_SESSION['intentos'])) {
 // Sanitización de entradas
 $username = mysqli_real_escape_string($mysqli, stripslashes(strip_tags(htmlspecialchars($_POST['username']))));
 $password = md5(mysqli_real_escape_string($mysqli, stripslashes(strip_tags(htmlspecialchars($_POST['password'])))));
+$ip = $_SERVER['REMOTE_ADDR'];
 
 // Validación básica
 if (!ctype_alnum($username) || !ctype_alnum($password)) {
@@ -49,14 +50,14 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
 } else {
     // Buscar usuario
     $query = mysqli_query($mysqli, "SELECT * FROM usuarios WHERE username = '$username'")
-                                or die('Error: ' . mysqli_error($mysqli));
+        or die('Error: ' . mysqli_error($mysqli));
     $rows = mysqli_num_rows($query);
 
     if ($rows > 0) {
         $data = mysqli_fetch_assoc($query);
 
         // Verificar si está bloqueado
-        if ($data['status'] !== 'activo') {
+        if ($data['status'] !== '0') {
             header("Location: index.php?alert=4"); // cuenta bloqueada
             exit();
         }
@@ -64,7 +65,10 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
         // Comparar contraseña
         if ($data['password'] === $password) {
             // Login correcto → resetear intentos
-            $_SESSION['intentos'] = 0;
+            //$_SESSION['intentos'] = 0;
+            mysqli_query($mysqli, "INSERT INTO logs_acceso (id_user, success) VALUES (" . $data['id_user'] . ", 0)");
+            // escribir logs
+            mysqli_query($mysqli, "UPDATE usuarios SET intentos = 0 WHERE id_user = " . $data['id_user']);
 
             $_SESSION['id_user']         = $data['id_user'];
             $_SESSION['name_user']       = $data['name_user'];
@@ -77,18 +81,31 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
             // if (!isset($_SESSION['intentos'])) {
             //     $_SESSION['intentos'] = 0;
             // }
-            $_SESSION['intentos']++;            
+            //$_SESSION['intentos']++;
 
-            if ($_SESSION['intentos'] >= 3) {
+
+            // Registrar intento fallido de acceso al sistema
+            mysqli_query($mysqli, "INSERT INTO logs_acceso (id_user, success) VALUES (" . $data['id_user'] . ", 1)");
+            //escribir logs
+
+            mysqli_query($mysqli, "UPDATE usuarios SET intentos = intentos + 1 WHERE id_user = " . $data['id_user']);
+
+            // Sumar intentos fallidos
+            $query2 = mysqli_query($mysqli, "SELECT intentos FROM usuarios WHERE id_user = " . $data['id_user']);
+            $row2 = mysqli_fetch_assoc($query2);
+            // Guardar el resultado en una variable
+            $intentos = $row2['intentos'];
+            
+            if ($intentos >= 4) {
                 // Bloquear usuario en la base
-                mysqli_query($mysqli, "UPDATE usuarios SET status='inactivo' WHERE id_user = ".$data['id_user']);
-                header("Location: index.php?alert=4&contador=".$_SESSION['intentos']); // cuenta bloqueada
+                mysqli_query($mysqli, "UPDATE usuarios SET status='2' WHERE id_user = " . $data['id_user']);
+                header("Location: index.php?alert=4"); // cuenta bloqueada
 
-                $_SESSION['intentos'] = 0;
-                
+                //$_SESSION['intentos'] = 0;
+
                 exit();
             } else {
-                header("Location: index.php?alert=1&contador=".$_SESSION['intentos']); // contraseña incorrecta
+                header("Location: index.php?alert=1"); // contraseña incorrecta
                 exit();
             }
         }
