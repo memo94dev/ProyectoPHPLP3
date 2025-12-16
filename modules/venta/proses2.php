@@ -11,6 +11,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
             $codigo                  = mysqli_real_escape_string($mysqli, trim($_POST['cod_venta']));
             $codigo_deposito         = mysqli_real_escape_string($mysqli, trim($_POST['cod_deposito']));
             $codigo_producto         = mysqli_real_escape_string($mysqli, trim($_POST['codigo_producto']));
+            $id_user                 = $_SESSION['id_user'];
 
             // Verificar si existe stock suficiente
             $sql = mysqli_query($mysqli, "SELECT * FROM producto, tmp WHERE producto.cod_producto=tmp.id_producto");
@@ -41,8 +42,8 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                     $nro_factura   = mysqli_real_escape_string($mysqli, trim($_POST['nro_factura']));
                     $suma_total    = mysqli_real_escape_string($mysqli, trim($_POST['suma_total']));
                     $estado = 'activo';
-                    $insert_venta = mysqli_query($mysqli, "INSERT INTO venta(cod_venta, id_cliente, nro_factura, fecha, estado, hora, total_venta) 
-                                                            VALUES($codigo, $id_cliente, '$nro_factura', '$fecha', '$estado', '$hora', '$suma_total')")
+                    $insert_venta = mysqli_query($mysqli, "INSERT INTO venta(cod_venta, id_cliente, nro_factura, fecha, estado, hora, total_venta, id_user) 
+                                                            VALUES($codigo, $id_cliente, '$nro_factura', '$fecha', '$estado', '$hora', '$suma_total', $id_user)")
                         or die('Error: ' . mysqli_error($mysqli));
 
                     // Insertar detalle de venta
