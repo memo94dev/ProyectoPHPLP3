@@ -250,6 +250,51 @@ SELECT * FROM usuarios WHERE username = 'memo'
                                     AND status='activo';
                                     
 SELECT * FROM usuarios WHERE password = '1';
+
+CREATE TABLE bloqueos(
+	id_bloqueo INT NOT NULL PRIMARY KEY,
+    bloq_descrip VARCHAR(55)
+);
+
+INSERT INTO bloqueos 
+	(id_bloqueo, bloq_descrip)
+VALUES
+	(1, 'Bloqueo Manual Administrativo'),
+    (2, 'Bloqueo Aut. por intentos fallidos');
+    
+SELECT * FROM bloqueos;
+
+CREATE TABLE logs_acceso(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_user INT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ip VARCHAR(45),
+    success INT
+);
+DROP TABLE logs_acceso;
+
+SELECT SUM(success) FROM logs_acceso WHERE id_user = 7;
+
+INSERT INTO logs_acceso (id_user, ip, success) VALUES (3, 333, 1);
+
+SELECT * FROM logs_acceso;
+
+SELECT * FROM logs_acceso ORDER BY fecha DESC;
+
+SELECT COUNT(*) FROM logs_acceso
+WHERE id_user =  1
+AND success = 1 
+AND fecha > (NOW() - INTERVAL 15 MINUTE);
+
+-- Vista de usuarios que incluye la descripcion o tipo de bloqueo
+CREATE VIEW v_usuarios2 AS (
+SELECT u.id_user, u.name_user, u.email, u.telefono, u.foto, p.per_descrip, u.status, b.tipo
+FROM usuarios u
+JOIN permisos p ON u.permisos_acceso = p.id_permisos
+LEFT JOIN bloqueos b ON u.status = b.id_bloqueo
+ORDER BY u.id_user);
+
+SELECT * FROM v_usuarios;
     
     
     

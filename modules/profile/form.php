@@ -75,7 +75,7 @@ if (isset($_SESSION['id_user'])) {
                         </div>
                         <div class="box-footer">
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-12" style="text-align: center;">
                                     <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
                                     <a href="?module=profile" class="btn btn-default btn-reset">Cancelar</a>
                                 </div>

@@ -33,6 +33,8 @@
 <?php
 session_start();
 require_once "config/database.php";
+require_once "config/Logger.php";
+$log = new Logger("logs/app.log");
 
 if (!isset($_SESSION['intentos'])) {
     $_SESSION['intentos'] = 0;
@@ -68,6 +70,7 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
             //$_SESSION['intentos'] = 0;
             mysqli_query($mysqli, "INSERT INTO logs_acceso (id_user, success) VALUES (" . $data['id_user'] . ", 0)");
             // escribir logs
+            $log->info("Login exitoso para usuario: " . $data['username']);
             mysqli_query($mysqli, "UPDATE usuarios SET intentos = 0 WHERE id_user = " . $data['id_user']);
 
             $_SESSION['id_user']         = $data['id_user'];
@@ -87,17 +90,19 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
             // Registrar intento fallido de acceso al sistema
             mysqli_query($mysqli, "INSERT INTO logs_acceso (id_user, success) VALUES (" . $data['id_user'] . ", 1)");
             //escribir logs
+            $log->security("Login fallido para usuario: " . $data['username']);
 
             mysqli_query($mysqli, "UPDATE usuarios SET intentos = intentos + 1 WHERE id_user = " . $data['id_user']);
 
-            // Sumar intentos fallidos
+            // Consultar intentos fallidos
             $query2 = mysqli_query($mysqli, "SELECT intentos FROM usuarios WHERE id_user = " . $data['id_user']);
             $row2 = mysqli_fetch_assoc($query2);
             // Guardar el resultado en una variable
             $intentos = $row2['intentos'];
-            
-            if ($intentos >= 4) {
+
+            if ($intentos >= 3) {
                 // Bloquear usuario en la base
+                $log->security("Se bloquea al usuario por intentos fallidos: " . $data['username']); // Se registra en los logs
                 mysqli_query($mysqli, "UPDATE usuarios SET status='2' WHERE id_user = " . $data['id_user']);
                 header("Location: index.php?alert=4"); // cuenta bloqueada
 
