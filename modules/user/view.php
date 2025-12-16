@@ -91,13 +91,19 @@
                                         <img class="img-user" src="images/user/<?php echo $data['foto']; ?>" width="45">
                                     </td>
                                 <?php }
+                                // Verificar si el usuario se encuentra bloqueado o no!
+                                if ($data['status'] != 0) {
+                                    $estado = 'bloqueado';
+                                }else{
+                                    $estado = 'activo';
+                                }
                                 echo "<td class='center'>$data[username]</td>
                                       <td class='center'>$data[name_user]</td>
                                       <td class='center'>$data[per_descrip]</td>
-                                      <td class='center'>$data[status]</td>
+                                      <td class='center'>$estado</td>
                                       <td class='center' width='100'>
                                       <div>";
-                                if ($data['status'] == 'activo') { ?>
+                                if ($data['status'] == '0') { ?>
                                     <a data-toggle="tooltip" data-placement="top" title="Bloquear" style="margin-right:5px"
                                         class="btn btn-danger btn-sm" href="modules/user/proses.php?act=off&id=<?php echo $data['id_user']; ?>"
                                         onclick="return confirm('Estas seguro de bloquear a <?php echo $data['name_user']; ?> ?');">

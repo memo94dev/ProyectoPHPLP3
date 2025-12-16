@@ -112,7 +112,8 @@ if (isset($_SESSION['id_user'])) {
                             <div class="col-sm-offset-3 col-sm-9">
                                 <label class="col-sm-2 control-label">Estado de la Cuenta</label>
                                 <div class="col-sm-5">
-                                    <input disabled type="text" class="form-control" name="status" value="<?php echo $data['status']; ?>">
+                                    <input disabled type="text" class="form-control" name="status" 
+                                    value="<?php $estado = ($data['status'] != 0) ? 'Bloqueado' : 'Activo'; echo $estado;?>">
                                 </div>
                             </div>
                         </div>

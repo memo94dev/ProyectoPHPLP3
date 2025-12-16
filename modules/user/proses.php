@@ -98,7 +98,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
         if (isset($_GET['id'])) {
             $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
 
-            $query = mysqli_query($mysqli, "UPDATE usuarios SET status = 'activo'
+            $query = mysqli_query($mysqli, "UPDATE usuarios SET status = '0', intentos = '0'
                                             WHERE id_user = '$id_user'")
                 or die('Error: ' . mysqli_error($mysqli));
 
@@ -110,7 +110,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
         if (isset($_GET['id'])) {
             $id_user = mysqli_real_escape_string($mysqli, trim($_GET['id']));
 
-            $query = mysqli_query($mysqli, "UPDATE usuarios SET status = 'inactivo'
+            $query = mysqli_query($mysqli, "UPDATE usuarios SET status = '1'
                                             WHERE id_user = '$id_user'")
                 or die('Error: ' . mysqli_error($mysqli));
 
