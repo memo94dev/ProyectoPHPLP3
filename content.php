@@ -100,6 +100,13 @@ if (empty($_SESSION['username'] && empty($_SESSION['password']))) {
     elseif ($_GET['module'] == 'stock') {
         include 'modules/stock/view.php';
     }
+
+    elseif ($_GET['module'] == 'pedidos_compras') {
+        include 'modules/pedidos_compras/view.php';
+    }
+    elseif ($_GET['module'] == 'form_pedidos_compras') {
+        include 'modules/pedidos_compras/form.php';
+    }
     
 }
 

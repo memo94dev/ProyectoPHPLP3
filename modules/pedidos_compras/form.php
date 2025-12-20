@@ -3,11 +3,11 @@
 
     <section class="content-header">
         <h1>
-            <i class="fa fa-edit icon-title"></i> Cargar Compra
+            <i class="fa fa-edit icon-title"></i> Cargar Pedido de Compras
         </h1>
         <ol class="breadcrumb">
             <li><a href="?module=start"><i class="fa fa-home"></i> Inicio</a></li>
-            <li><a href="?module=compras"> Compras</a></li>
+            <li><a href="?module=pedidos_compras">Pedido de Compras</a></li>
             <li class="active">Agregar</li>
         </ol>
     </section>
@@ -16,10 +16,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    <form role="form" class="form-horizontal" action="modules/compras/proses.php?act=insert" method="POST">
+                    <form role="form" class="form-horizontal" action="modules/pedidos_compras/proses.php?act=insert" method="POST">
                         <div class="box-body">
                             <?php  // consulta para obtener el siguiente codigo de ciudad
-                            $query_id = mysqli_query($mysqli, "SELECT MAX(cod_compra) as id FROM compra")
+                            $query_id = mysqli_query($mysqli, "SELECT MAX(id_pedido) as id FROM pedidos_compra")
                                 or die('Error : ' . mysqli_error($mysqli));
                             $count = mysqli_num_rows($query_id);
                             if ($count <> 0) {
@@ -31,7 +31,7 @@
                             ?>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <label class="col-sm-2 control-label">Codigo</label>
+                                    <label class="col-sm-2 control-label">ID</label>
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" name="cod_compra" value="<?php echo $codigo ?>" readonly>
                                     </div>
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Hora</label>
                                     <div class="col-sm-3">
@@ -59,7 +59,7 @@
                                             required readonly>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Proveedror</label>
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">N de Factura</label>
                                     <div class="col-sm-3">
@@ -103,7 +103,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <hr>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
@@ -122,7 +122,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                                        <a href="?module=compras" class="btn btn-default btn-reset">Cancelar</a>
+                                        <a href="?module=pedidos_compras" class="btn btn-default btn-reset">Cancelar</a>
                                     </div>
                                 </div>
                             </div>

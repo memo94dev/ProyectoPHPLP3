@@ -288,13 +288,126 @@ AND fecha > (NOW() - INTERVAL 15 MINUTE);
 
 -- Vista de usuarios que incluye la descripcion o tipo de bloqueo
 CREATE VIEW v_usuarios2 AS (
-SELECT u.id_user, u.name_user, u.email, u.telefono, u.foto, p.per_descrip, u.status, b.tipo
+SELECT u.id_user, u.name_user, u.email, u.telefono, u.foto, p.per_descrip, u.status, b.tipo AS status_descrip
 FROM usuarios u
 JOIN permisos p ON u.permisos_acceso = p.id_permisos
 LEFT JOIN bloqueos b ON u.status = b.id_bloqueo
 ORDER BY u.id_user);
 
-SELECT * FROM v_usuarios;
+SELECT * FROM v_usuarios2;
+
+DROP VIEW v_usuarios2;
+
+/**********************************/
+/* Nuevas Tablas para movimientos */
+/**********************************/
+-- Tabla de proveedores
+CREATE TABLE proveedores (
+    id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    ruc VARCHAR(20) UNIQUE NOT NULL,
+    telefono VARCHAR(20),
+    direccion VARCHAR(150)
+);
+
+-- Tabla de clientes
+CREATE TABLE clientes (
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    ruc VARCHAR(20) UNIQUE,
+    telefono VARCHAR(20),
+    direccion VARCHAR(150)
+);
+
+-- Pedidos de compra
+CREATE TABLE pedidos_compra (
+    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
+    cod_proveedor INT NOT NULL,
+    fecha DATE NOT NULL,
+    estado ENUM('P','A','R') DEFAULT 'P',
+    FOREIGN KEY (cod_proveedor) REFERENCES proveedor(cod_proveedor)
+);
+
+CREATE TABLE detalle_pedidos_compra(
+	cod_producto INT NOT NULL,
+    id_pedido INT NOT NULL,
+    cantidad INT NOT NULL,
+	CONSTRAINT detalle_p_compra_pk PRIMARY KEY (cod_producto, id_pedido),
+	CONSTRAINT id_pedido_fk FOREIGN KEY (id_pedido)	
+    REFERENCES pedidos_compra (id_pedido) MATCH SIMPLE 
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE estado_pedidos_compra (
+    id_estado_compra CHAR UNIQUE,
+    estado_compra_descrip VARCHAR(25)
+);
+INSERT INTO estado_pedidos_compra
+	(id_estado_compra, estado_compra_descrip)
+VALUES
+	('A', 'Aprobado'),
+    ('P', 'Pendiente'),
+    ('R', 'Rechazado');
+-- DROP TABLE estado_pedidos_compra;
+
+-- Presupuestos
+CREATE TABLE presupuestos (
+    id_presupuesto INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    fecha DATE NOT NULL,
+    total INT NOT NULL,
+    estado ENUM('P', 'A', 'R') DEFAULT 'P',
+    FOREIGN KEY (id_pedido) REFERENCES pedidos_compra(id_pedido)
+);
+
+CREATE TABLE detalle_presupuesto(
+	id_presupuesto INT NOT NULL,
+    cod_producto INT NOT NULL,
+    descripcion VARCHAR(55),
+    cantidad INT NOT NULL,
+    sub_total INT NOT NULL
+);
+
+-- Compras
+CREATE TABLE compras (
+    id_compra INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT,
+    fecha DATE NOT NULL,
+    total DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos_compra(id_pedido)
+);
+
+-- Ventas
+CREATE TABLE ventas (
+    id_venta INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    fecha DATE NOT NULL,
+    total DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+-- Caja
+CREATE TABLE caja (
+    id_caja INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE NOT NULL,
+    apertura INT NOT NULL,
+    cierre INT,
+    estado ENUM('abierta','cerrada')
+);
+
+-- Movimientos de caja
+CREATE TABLE movimientos_caja (
+    id_movimiento INT AUTO_INCREMENT PRIMARY KEY,
+    id_caja INT NOT NULL,
+    tipo ENUM('ingreso','egreso') NOT NULL,
+    descripcion VARCHAR(150),
+    monto INT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_caja) REFERENCES caja(id_caja)
+);
+
+
+
     
     
     

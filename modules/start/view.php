@@ -23,6 +23,10 @@
         <h2>Formulario de movimiento</h2>
         <div class="row">
 
+            <!-- Bloque Pedido Compras -->
+
+            <?php include("templates/ref_pedidos_compras.php"); ?>
+
             <!-- Bloque Compras -->
 
             <?php include("templates/ref_movi_compras.php"); ?>
@@ -69,6 +73,10 @@
 
         <h2>Formulario de movimiento</h2>
         <div class="row">
+
+            <!-- Bloque Pedido Compras -->
+
+            <?php include("templates/ref_pedidos_compras.php"); ?>
 
             <!-- Bloque Compras -->
 
