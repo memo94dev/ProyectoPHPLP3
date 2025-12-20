@@ -1,9 +1,12 @@
-[2025-12-20 10:24:48] [INFO] Login exitoso para usuario: memo
-[2025-12-20 14:00:40] [INFO] Login exitoso para usuario: ucompras
-[2025-12-20 14:06:42] [INFO] Login exitoso para usuario: memo
-[2025-12-20 14:10:51] [INFO] Login exitoso para usuario: ucompras
-[2025-12-20 14:11:15] [INFO] Login exitoso para usuario: uc
-[2025-12-20 14:11:42] [INFO] Login exitoso para usuario: memo
-[2025-12-20 14:11:58] [INFO] Login exitoso para usuario: uc
-[2025-12-20 14:12:33] [INFO] Login exitoso para usuario: uv
-[2025-12-20 14:28:39] [INFO] Login exitoso para usuario: memo
+[2025-12-20 16:34:00] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:34:11] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:34:11] [SECURITY] Segundo intento fallido. Se avisa al usuario que sera bloqueado: uc
+[2025-12-20 16:35:48] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:35:57] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:35:57] [SECURITY] Segundo intento fallido. Se avisa al usuario que sera bloqueado: uc
+[2025-12-20 16:36:05] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:36:05] [SECURITY] Se bloquea al usuario por intentos fallidos: uc
+[2025-12-20 16:36:23] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:36:28] [SECURITY] Login fallido para usuario: uc
+[2025-12-20 16:36:28] [SECURITY] Segundo intento fallido. Se avisa al usuario que sera bloqueado: uc
+[2025-12-20 16:36:45] [INFO] Login exitoso para usuario: uc

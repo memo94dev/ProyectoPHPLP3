@@ -44,12 +44,17 @@
                     <h4><i class='icon fa fa-times-circle'></i> Ha ocurrido un error!</h4>
                     Debes ingresar con usuario y contraseña.
                 </div>";
-        }
-        elseif ($_GET['alert'] == 4) {
+        } elseif ($_GET['alert'] == 4) {
+            echo "<div class='alert alert-danger alert-dismissable'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    <h4><i class='icon fa fa-times-circle'></i> Bloqueo!</h4>
+                    El usuario se encuentra bloqueado!. Contactese con el administrador del sistema!
+                </div>";
+        } elseif ($_GET['alert'] == 5) {
             echo "<div class='alert alert-warning alert-dismissable'>
                     <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                     <h4><i class='icon fa fa-times-circle'></i> Ha ocurrido un error!</h4>
-                    El usuario se encuentra bloqueado!. Contactese con el administrador del sistema!
+                    Tiene un ultimo intento antes de ser bloqueado!
                 </div>";
         }
         ?>
@@ -75,8 +80,8 @@
         </div>
     </div>
 
-        <script src="assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 </body>
 

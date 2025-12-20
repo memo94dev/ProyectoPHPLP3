@@ -66,7 +66,7 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
 
         // Comparar contraseña
         if ($data['password'] === $password) {
-            // Login correcto → resetear intentos
+            // Login correcto, resetear intentos
             //$_SESSION['intentos'] = 0;
             mysqli_query($mysqli, "INSERT INTO logs_acceso (id_user, success) VALUES (" . $data['id_user'] . ", 0)");
             // escribir logs
@@ -80,7 +80,7 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
 
             header("Location: main.php?module=start");
         } else {
-            // Login incorrecto → incrementar intentos
+            // Login incorrecto, incrementar intentos
             // if (!isset($_SESSION['intentos'])) {
             //     $_SESSION['intentos'] = 0;
             // }
@@ -100,7 +100,10 @@ if (!ctype_alnum($username) || !ctype_alnum($password)) {
             // Guardar el resultado en una variable
             $intentos = $row2['intentos'];
 
-            if ($intentos >= 3) {
+            if ($intentos == 2) {
+                $log->security("Segundo intento fallido. Se avisa al usuario que sera bloqueado: " . $data['username']); // Se registra en los logs
+                header("Location: index.php?alert=5"); // aviso de bloqueo entrante
+            }elseif ($intentos >= 3) {
                 // Bloquear usuario en la base
                 $log->security("Se bloquea al usuario por intentos fallidos: " . $data['username']); // Se registra en los logs
                 mysqli_query($mysqli, "UPDATE usuarios SET status='2' WHERE id_user = " . $data['id_user']);
