@@ -406,6 +406,22 @@ CREATE TABLE movimientos_caja (
     FOREIGN KEY (id_caja) REFERENCES caja(id_caja)
 );
 
+/*****************************************/
+
+SELECT p.id_pedido, p.cod_proveedor, pr.razon_social, p.fecha, p.estado, es.estado_compra_descrip
+FROM pedidos_compra p
+JOIN proveedor pr ON p.cod_proveedor = pr.cod_proveedor
+JOIN estado_pedidos_compra es ON p.estado = es.id_estado_compra;
+
+CREATE VIEW v_pedidos_compra AS(
+	SELECT p.id_pedido, p.cod_proveedor, pr.razon_social, p.fecha, p.hora, 
+    p.estado, es.estado_compra_descrip
+	FROM pedidos_compra p
+	JOIN proveedor pr ON p.cod_proveedor = pr.cod_proveedor
+	JOIN estado_pedidos_compra es ON p.estado = es.id_estado_compra
+);
+SELECT * FROM v_pedidos_compra;
+
 
 
     

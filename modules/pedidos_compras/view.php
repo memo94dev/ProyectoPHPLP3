@@ -25,18 +25,25 @@
                             Datos registrados correctamente.
                           </div>";
             } elseif ($_GET['alert'] == 2) {
-                echo "<div class='alert alert-danger alert-dismissable'>
+                echo "<div class='alert alert-success alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                             <h4><i class='icon fa fa-check-circle'></i> Exito!</h4>
-                            El pedido de compra se ha Anulado correctamente.
+                            El pedido de compra se ha Rechazado correctamente.
                           </div>";
-                          } elseif ($_GET['alert'] == 3) {
+            } elseif ($_GET['alert'] == 3) {
                 echo "<div class='alert alert-danger alert-dismissable'>
                             <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                             <h4><i class='icon fa fa-check-circle'></i> Error!</h4>
                             No se pudo realizar la acción.
                           </div>";
-            } ?>
+            } elseif ($_GET['alert'] == 4) {
+                echo "<div class='alert alert-success alert-dismissable'>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                            <h4><i class='icon fa fa-check-circle'></i> Realizado!</h4>
+                            Se ha pasado a Pendientes de Aprobación.
+                          </div>";
+            } 
+            ?>
 
             <!-- Aplicación de DataTables -->
             <div class="box box-primary">
@@ -48,6 +55,7 @@
                                 <th class="center">ID.</th>
                                 <th class="center">Proveedor</th>
                                 <th class="center">Fecha</th>
+                                <th class="center">Hora</th>
                                 <th class="center">Estado</th>
                                 <th class="center">Acciones</th>
                             </tr>
@@ -64,21 +72,50 @@
                                 $estado = $data['estado_compra_descrip'];
                                 $fecha = $data['fecha'];
                                 $fecha_formatted = date('d-m-Y', strtotime($fecha));
+                                $hora = $data['hora'];
+                                $hora_formatted = date('H:i:s', strtotime($hora));
                                 echo "<tr>
                                       <td class='center'>$id_pedido</td>
                                       <td class='center'>$razon_social</td>
-                                      <td class='center'>$estado</td>
+                                      <td class='center'>$hora_formatted</td>
                                       <td class='center'>$fecha_formatted</td>
+                                      <td class='center'>$estado</td>
                                       <td class='center' width='100'>
                                       <div>"; ?>
                                 <a target="_blank" data-toggle='tooltip' data-placement='top' title='Imprimir' class='btn btn-warning btn-sm'
                                     href="modules/pedidos_compras/print.php?act=print&id_pedido=<?php echo $id_pedido; ?>">
                                     <i class='glyphicon glyphicon-print'></i>
                                 </a>
-                                <a href="modules/pedidos_compras/proses.php?act=rechazar&id_pedido=<?php echo $id_pedido; ?>"
+                                <?php
+                                // Ejecutar el query
+                                $query = mysqli_query($mysqli, "SELECT estado FROM pedidos_compra where id_pedido = " . $id_pedido)
+                                    or die('Error: ' . mysqli_error($mysqli));
+                                // Obtener el resultado en un array asociativo
+                                $row = mysqli_fetch_assoc($query);
+
+                                // Guardar el valor en una variable
+                                $estado = $row['estado'];
+
+                                // Usar en un if/else
+                                if ($estado == 'A') {
+                                    echo "";
+                                } elseif ($estado == 'P') {
+                                    echo "<a href='modules/pedidos_compras/proses.php?act=rechazar&id_pedido=$id_pedido'
+                                    data-toggle='tooltip' data-data-placement='top' title='Rechazar Pedido de Compra'
+                                    class='btn btn-danger btn-sm' onclick='return confirm('¿Estas seguro/a de Rechazar el Pedido Cód.: $id_pedido')'>
+                                    <i class='glyphicon glyphicon-remove'></i></a>";
+                                } elseif ($estado == 'R') {
+                                    echo "<a href='modules/pedidos_compras/proses.php?act=pendiente&id_pedido=$id_pedido;'
+                                    data-toggle='tooltip' data-data-placement='top' title='Cambiar a Pendiente el Pedido de Compra'
+                                    class='btn btn-success btn-sm' onclick='return confirm('¿Estas seguro/a de pasar a Pendiente el Pedido Cód.: $id_pedido')'>
+                                    <i class='glyphicon glyphicon-ok'></i></a>";
+                                }
+
+                                ?>
+                                <!-- <a href="modules/pedidos_compras/proses.php?act=rechazar&id_pedido=<?php echo $id_pedido; ?>"
                                     data-toggle="tooltip" data-data-placement="top" title="Rechazar Pedido de Compra"
                                     class="btn btn-danger btn-sm" onclick="return confirm('¿Estas seguro/a de Rechazar el Pedido Cód.: <?php echo $id_pedido; ?>?')">
-                                    <i class="glyphicon glyphicon-trash"></i></a>
+                                    <i class="glyphicon glyphicon-trash"></i></a> -->
                             <?php
                                 echo "</div>
                                       </td>

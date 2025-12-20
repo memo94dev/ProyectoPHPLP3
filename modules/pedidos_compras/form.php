@@ -24,16 +24,16 @@
                             $count = mysqli_num_rows($query_id);
                             if ($count <> 0) {
                                 $data_id = mysqli_fetch_assoc($query_id);
-                                $codigo = $data_id['id'] + 1;
+                                $id_pedido = $data_id['id'] + 1;
                             } else {
-                                $codigo = 1;
+                                $id_pedido = 1;
                             }
                             ?>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">ID</label>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" name="cod_compra" value="<?php echo $codigo ?>" readonly>
+                                        <input type="text" class="form-control" name="id_pedido" value="<?php echo $id_pedido ?>" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Hora</label>
                                     <div class="col-sm-3">
@@ -59,7 +59,7 @@
                                             required readonly>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <label class="col-sm-2 control-label">Proveedror</label>
