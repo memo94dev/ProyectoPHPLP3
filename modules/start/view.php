@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <h2>Formulario de movimiento</h2>
+        <h2>Formulario de movimientos</h2>
         <div class="row">
 
             <!-- Bloque Pedido Compras -->
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <h2>Formulario de movimiento</h2>
+        <h2>Formulario de movimientos</h2>
         <div class="row">
 
             <!-- Bloque Pedido Compras -->
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <h2>Formulario de movimiento</h2>
+        <h2>Formulario de movimientos</h2>
         <div class="row">
 
             <!-- Bloque Ventas -->
