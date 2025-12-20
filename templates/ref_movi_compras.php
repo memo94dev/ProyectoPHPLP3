@@ -12,7 +12,7 @@
             </p>
         </div>
         <div class="icon">
-            <i class="glyphicon glyphicon-piggy-bank"></i>
+            <i class="glyphicon glyphicon-bitcoin"></i>
         </div>
         <a href="?module=compras" class="small-box-footer" title="Registrar Compras" data-toggle="tooltip">
             <i class="fa fa-plus"></i></a>

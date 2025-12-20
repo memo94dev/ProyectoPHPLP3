@@ -12,7 +12,7 @@
             </p>
         </div>
         <div class="icon">
-            <i class="glyphicon glyphicon-piggy-bank"></i>
+            <i class="glyphicon glyphicon-inbox"></i>
         </div>
         <a href="?module=pedidos_compras" class="small-box-footer" title="Registrar Nuevo Pedido" data-toggle="tooltip">
             <i class="fa fa-plus"></i></a>

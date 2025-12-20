@@ -14,7 +14,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                 $name_user          = mysqli_real_escape_string($mysqli, trim($_POST['name_user']));
                 $email              = mysqli_real_escape_string($mysqli, trim($_POST['email']));
                 $telefono           = mysqli_real_escape_string($mysqli, trim($_POST['telefono']));
-                $permisos_acceso    = mysqli_real_escape_string($mysqli, trim($_POST['permisos_acceso']));
+                //$permisos_acceso    = mysqli_real_escape_string($mysqli, trim($_POST['permisos_acceso']));
                 // File upload configuration
                 $name_file = $_FILES['foto']['name'];
                 $size_file = $_FILES['foto']['size'];
@@ -43,8 +43,7 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                     $query = mysqli_query($mysqli, "UPDATE usuarios SET username = '$username',
                                                                 name_user = '$name_user',
                                                                 email = '$email',
-                                                                telefono = '$telefono',
-                                                                permisos_acceso = '$permisos_acceso'
+                                                                telefono = '$telefono'
                                                         WHERE id_user = '$id_user'")
                         or die('Error: ' . mysqli_error($mysqli));
                     if ($query) {
@@ -58,7 +57,6 @@ if (empty($_SESSION['username'])  && empty($_SESSION['password'])) {
                                                                         name_user = '$name_user',
                                                                         email = '$email',
                                                                         telefono = '$telefono',
-                                                                        permisos_acceso = '$permisos_acceso',
                                                                         foto = '$name_file'
                                                                 WHERE id_user = '$id_user'")
                                 or die('Error: ' . mysqli_error($mysqli));
